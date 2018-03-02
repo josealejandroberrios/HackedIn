@@ -10,7 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302155507) do
+ActiveRecord::Schema.define(version: 20180302174818) do
+
+  create_table "educations", force: :cascade do |t|
+    t.string "place"
+    t.string "qualification"
+    t.string "discipline"
+    t.date "start_date"
+    t.date "finish_date"
+    t.integer "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_educations_on_profile_id"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "company"
+    t.string "position"
+    t.string "description"
+    t.date "start_date"
+    t.date "finish_date"
+    t.integer "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_jobs_on_profile_id"
+  end
+
+  create_table "levels", force: :cascade do |t|
+    t.string "name"
+    t.text "positive_description"
+    t.text "negative_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string "avatar"
@@ -24,7 +56,29 @@ ActiveRecord::Schema.define(version: 20180302155507) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "repositories", force: :cascade do |t|
+    t.string "link"
+    t.integer "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_repositories_on_profile_id"
+  end
+
+  create_table "requirements", force: :cascade do |t|
+    t.string "name"
+    t.integer "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_requirements_on_skill_id"
+  end
+
   create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "skills", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

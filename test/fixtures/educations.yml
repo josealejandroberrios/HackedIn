@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  place: MyString
+  qualification: MyString
+  discipline: MyString
+  start_date: 2018-03-02
+  finish_date: 2018-03-02
+  profile: one
+
+two:
+  place: MyString
+  qualification: MyString
+  discipline: MyString
+  start_date: 2018-03-02
+  finish_date: 2018-03-02
+  profile: two

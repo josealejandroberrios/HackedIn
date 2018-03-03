@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'roles/index'
+
+  get 'roles/new'
+
+  get 'roles/edit'
+
   devise_for :users
   
   resources :profiles, only: [:show, :new, :create, :edit, :update]  do

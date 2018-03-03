@@ -1,10 +1,8 @@
 
-
-
-
-
 %nav.navbar.navbar-light.bg-light.justify-content-between
-  %p.navbar-brand }{
+  %a.navbar-brand{:href => "#"}
+    %img{:alt => "", :height => "30", :src => "https://image.freepik.com/iconos-gratis/logo-wordpress_318-74889.jpg", :width => "30"}/
+
 
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .form-inline
@@ -12,7 +10,7 @@
       = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'email'
     
     
-      = f.label 'Contraseña',class:'sr-only'
+      = f.label :password, class:'sr-only'
       = f.password_field :password, autocomplete: "off", class: 'form-control mx-1', placeholder: 'Contraseña'
       
       .actions
@@ -21,6 +19,4 @@
     
 
 
-
-
-
+/ aqui %a va el logo, importante usar la clase  'navbar-brand'

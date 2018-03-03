@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302174818) do
+ActiveRecord::Schema.define(version: 20180302233532) do
 
   create_table "educations", force: :cascade do |t|
-    t.string "place"
-    t.string "qualification"
-    t.string "discipline"
-    t.date "start_date"
+    t.string "place", null: false
+    t.string "qualification", null: false
+    t.string "discipline", null: false
+    t.date "start_date", null: false
     t.date "finish_date"
     t.integer "profile_id"
     t.datetime "created_at", null: false
@@ -24,11 +24,21 @@ ActiveRecord::Schema.define(version: 20180302174818) do
     t.index ["profile_id"], name: "index_educations_on_profile_id"
   end
 
+  create_table "fullfillments", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "requirement_id"
+    t.boolean "status", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_fullfillments_on_profile_id"
+    t.index ["requirement_id"], name: "index_fullfillments_on_requirement_id"
+  end
+
   create_table "jobs", force: :cascade do |t|
-    t.string "company"
-    t.string "position"
-    t.string "description"
-    t.date "start_date"
+    t.string "company", null: false
+    t.string "position", null: false
+    t.string "description", null: false
+    t.date "start_date", null: false
     t.date "finish_date"
     t.integer "profile_id"
     t.datetime "created_at", null: false
@@ -37,23 +47,30 @@ ActiveRecord::Schema.define(version: 20180302174818) do
   end
 
   create_table "levels", force: :cascade do |t|
-    t.string "name"
-    t.text "positive_description"
-    t.text "negative_description"
+    t.string "name", null: false
+    t.text "positive_description", null: false
+    t.text "negative_description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "profiles", force: :cascade do |t|
     t.string "avatar"
-    t.text "about"
-    t.string "country"
+    t.text "about", null: false
+    t.string "country", null: false
     t.integer "user_id"
     t.integer "level_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["level_id"], name: "index_profiles_on_level_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "profiles_skills", id: false, force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "skill_id"
+    t.index ["profile_id"], name: "index_profiles_skills_on_profile_id"
+    t.index ["skill_id"], name: "index_profiles_skills_on_skill_id"
   end
 
   create_table "repositories", force: :cascade do |t|
@@ -65,7 +82,7 @@ ActiveRecord::Schema.define(version: 20180302174818) do
   end
 
   create_table "requirements", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.integer "skill_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -73,13 +90,13 @@ ActiveRecord::Schema.define(version: 20180302174818) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "skills", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -95,8 +112,8 @@ ActiveRecord::Schema.define(version: 20180302174818) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "name"
-    t.string "lastname"
+    t.string "name", null: false
+    t.string "lastname", null: false
     t.integer "role_id", default: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,4 +1,5 @@
 class Requirement < ApplicationRecord
   belongs_to :skill
-  has_and_belongs_to_many :profiles
+  has_may :fullfillments
+  has_may :profiles, through: :fullfillments, dependent: :destroy
 end

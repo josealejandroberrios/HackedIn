@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'form', to: 'jobs#form' 
+
   get 'roles/index'
 
   get 'roles/new'

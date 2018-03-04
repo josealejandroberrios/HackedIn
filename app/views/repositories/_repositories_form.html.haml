@@ -1,0 +1,12 @@
+.row.justify-content-center
+    .col-sm-4
+        .card.p-4
+            %h3.text-center.mb-4 Registro de Usuarios
+            = form_for [@profile, @repository] do |f|
+                
+                .form-group
+                    = f.label 'repositorio'
+                    = f.text_field :repository, autofocus: true, class: 'form-control'
+                .actions
+                    = f.submit "Guardar", class: 'btn btn-success btn-block'
+

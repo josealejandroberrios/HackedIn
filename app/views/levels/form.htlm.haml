@@ -1,0 +1,19 @@
+.row.justify-content-center
+  .col-sm-4
+    .card.p-4
+      %h3.text-center.mb-4 Registro de niveles
+      = form_for :level do |f|
+        .form-group
+          = f.label 'Nombre'
+          = f.text_field :name, autofocus: true, class: 'form-control'
+        .form-group
+          = f.label 'Posición'
+          = f.text_field :position, class: 'form-control'
+        .form-group
+          = f.label 'Descripción positiva'
+          = f.text_field :positive_description, class: 'form-control'
+          .form-group
+            = f.label 'Descripción negativa'
+            = f.text_field :negative_description, class: 'form-control'        
+        .actions
+          = f.submit "Guardar", class: 'btn btn-success btn-block'

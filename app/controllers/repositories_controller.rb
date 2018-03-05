@@ -3,6 +3,10 @@ class RepositoriesController < ApplicationController
   before_action :set_profile, only: [:index, :create]
   before_action :set_repository, only: [:edit, :update]
 
+  def _repositories_form
+
+  end
+
   def index
     @repositories = Repository.find_or_initialize_by(id: params[:id])
   end

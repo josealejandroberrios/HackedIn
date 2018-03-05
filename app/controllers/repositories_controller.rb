@@ -3,8 +3,8 @@ class RepositoriesController < ApplicationController
   before_action :set_profile, only: [:index, :create]
   before_action :set_repository, only: [:edit, :update]
 
-  def repositories_form
-    
+  def _repositories_form
+
   end
 
   def index

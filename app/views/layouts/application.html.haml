@@ -8,6 +8,5 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .container-flex.bc
-      -# %p.notice= notice
-      -# %p.alert= alert
+      = render partial: 'partials/navbar'
       = yield

@@ -1,0 +1,14 @@
+.row.justify-content-center
+  .col-4
+    .card.p-4
+      %h3.text-center.mb-4 Registro de Perfil
+      = form_for(@profile) do |f|
+        -# = user_error_messages!
+        .form-group
+          = f.label 'Descripcion'
+          = f.text_field :about, class: 'form-control'
+        .form-group
+          = f.label 'Pais'
+          = f.text_field :country, class: 'form-control'
+        .actions
+          = f.submit "Guardar", class: 'btn btn-success btn-block'             

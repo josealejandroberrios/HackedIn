@@ -1,0 +1,44 @@
+.col
+  .row
+    #List-Educations.col
+      %h3 Formación
+      - if user_signed_in?
+        - if @profile.user_id === current_user.id
+          %button.btn.btn-success
+            = link_to 'Nuevo', new_profile_education_path(@profile), class: 'text-white'
+      - if @profile.educations.empty?
+        .col
+      - else
+        - @profile.educations.each do |education|
+          .row
+            #Education.col-10
+              .row
+                .col
+                  %h5
+                    = education.place
+              .row
+                .col
+                  %h5
+                    = education.qualification
+              .row
+                .col
+                  %h5
+                    = education.discipline
+              .row
+                .col
+                  %h5
+                    = "#{education.start_date} al #{education.finish_date}"
+                  %hr/
+            - if user_signed_in?
+              - if @profile.user_id === current_user.id
+                .col-2
+                  .row
+                    .col
+                      %button.btn.btn-success
+                        = link_to 'Editar', edit_profile_education_path(@profile, education), class: 'text-white'
+            
+
+          
+        
+              
+              

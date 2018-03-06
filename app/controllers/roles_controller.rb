@@ -1,5 +1,8 @@
 class RolesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_role, only: [:edit, :update]
+
+
   def index
    @roles = Role.all 
   end
@@ -10,10 +13,15 @@ class RolesController < ApplicationController
 
   def create
     @role = Role.new(role_params)
-    if @role.save
-      redirect_to role_path
-    else
-      render :new
+
+    respond_to do |format|
+      if @role.save
+        format.html { redirect_to  roles_path } ### Modificar el path
+        format.json { render :show, status: :created, location: @role }
+      else
+        format.html { render :new }
+        format.json { render json: @role.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -22,16 +30,20 @@ class RolesController < ApplicationController
   end
 
   def update
-    if @role.update(role_params)
-      redirect_to role_path
-    else
-      render :edit
+    respond_to do |format|
+      if @role.update(role_params)
+        format.html { redirect_to roles_path } ### Modificar el path
+        format.json { render :show, status: :ok, location: @role }
+      else
+        format.html { render :edit }
+        format.json { render json: @role.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   private
     def set_role
-      @role = Role.find_by(id: params[:id])
+      @role = Role.find(params[:id])
     end
 
     def role_params

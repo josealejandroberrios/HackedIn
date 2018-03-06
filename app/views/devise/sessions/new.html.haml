@@ -1,22 +1,40 @@
--# %h2 Log in
--# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
--#   .field
--#     = f.label :email
--#     %br/
--#     = f.email_field :email, autofocus: true, autocomplete: "email"
--#   .field
--#     = f.label :password
--#     %br/
--#     = f.password_field :password, autocomplete: "off"
--#   - if devise_mapping.rememberable?
--#     .field
--#       = f.check_box :remember_me
--#       = f.label :remember_me
--#   .actions
--#     = f.submit "Log in"
--# = render "devise/shared/links"
-.row
-  .col-12.mt-3
-    = render template: 'devise/sessions/login_form'
-  .col-12.mt-5
-    = render template: 'devise/sessions/registration_form'
+-# .col
+-#   .row
+-#     .col-2.text-center
+-#       = image_tag 'logo.png', class: 'user-nbar-logo'
+-#     .col-4
+-#     .col-6 
+-#       = form_for(:user, url: new_user_session_path(@user)) do |f|
+-#         .row.justify-content-center.pt-3
+-#           .col-5.text-center
+-#             .field
+-#               = f.label 'Correo'
+-#               = f.email_field :email, autofocus: true, autocomplete: "email"
+-#           .col-5.text-center
+-#             .field
+-#               = f.label 'Contraseña'
+-#               = f.password_field :password, autocomplete: "off"  
+-#           .col-2
+-#             .actions
+-#               = f.submit "Log in", class: 'btn btn-success btn-block'
+
+.col-sm-12
+  .row.align-items-center
+    .col-sm-2.text-center
+      = image_tag 'logo.png', class: 'user-nbar-logo'
+    .col-sm-5
+    .col-sm-5
+      = form_for(:user, url: new_user_session_path(@user)) do |f|
+        .row
+          .col-sm-4
+            .field
+              -# = f.label 'Correo'
+              = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: 'form-control'
+          .col-sm-4
+            .field
+              -# = f.label 'Contraseña'
+              = f.password_field :password, autocomplete: "off", placeholder: "Contraseña", class: 'form-control'
+          .col-sm-4
+            .actions
+              = f.submit "Log in", class: 'btn btn-success btn-block'
+        -# = render "devise/shared/links"

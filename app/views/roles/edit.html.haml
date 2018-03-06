@@ -1,0 +1,7 @@
+.row.justify-content-center
+  #Edit-Rol.col-4
+    .card.p-4
+      %h3.text-center.mb-4 Editar Rol
+      = render 'form', role: @role
+      = link_to 'Volver', roles_path   #### Agregar cuando se tenga el index
+

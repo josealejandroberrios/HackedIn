@@ -1,11 +1,7 @@
 class EducationsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_profile, only: [:index, :create]
   before_action :set_education, only: [:edit, :update]
-
-  def formeducation
-
-  end
 
   def index
     @eductions = Education.find_or_initialize_by(id: params[:id])
@@ -20,7 +16,7 @@ class EducationsController < ApplicationController
 
     respond_to do |format|
       if @education.save
-        format.html { redirect_to  profile_educations_path } ### Modificar el path
+        format.html { redirect_to  profile_path(@profile) } ### Modificar el path
         format.json { render :show, status: :created, location: @education }
       else
         format.html { render :new }
@@ -36,7 +32,7 @@ class EducationsController < ApplicationController
   def update
     respond_to do |format|
       if @education.update(education_params)
-        format.html { redirect_to profile_educations_path(params[:profile_id]) } ### Modificar el path
+        format.html { redirect_to profile_path(@education.profile) } ### Modificar el path
         format.json { render :show, status: :ok, location: @education }
       else
         format.html { render :edit }

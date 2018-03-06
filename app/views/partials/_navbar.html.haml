@@ -1,25 +1,30 @@
 - if user_signed_in?
   #Nav.col
     .row
-      .col
+      .col-2.mt-1
         = image_tag 'logo.png', class: 'user-nbar-logo'
+      .col-4
+        
       -if current_user.role.name != 'ADMINISTRADOR' 
-        .col
-          %button.btn.btn-primary
+        .col-3.mt-3
+          %button.btn.btn-primary.position-absolute.rounded-circle
             = link_to profile_path(current_user.profile) do
-              %h6.text-white
+              %h6.text-white.m-0
                 = "#{current_user.name.first.upcase}"
-              %span.badge.text-white
-                = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
+          
+          = link_to profile_path(current_user.profile), class:"card-header ml-3 pt-2 " do
+
+            %span.badge.text-dark
+              = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
       - else
-        .col
+        .col-3
           %button.btn.btn-primary
             = link_to profile_path(current_user) do
               %h6.text-white
                 = "#{current_user.name.first.upcase}"
               %span.badge.text-white
                 = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
-      .col-
+      .col-3.mt-3
         %button.btn.btn-danger
           = link_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class: 'text-white'
 - else

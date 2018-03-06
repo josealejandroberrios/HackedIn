@@ -1,19 +1,40 @@
-.col
-  .row
-    .col-2.text-center
+-# .col
+-#   .row
+-#     .col-2.text-center
+-#       = image_tag 'logo.png', class: 'user-nbar-logo'
+-#     .col-4
+-#     .col-6 
+-#       = form_for(:user, url: new_user_session_path(@user)) do |f|
+-#         .row.justify-content-center.pt-3
+-#           .col-5.text-center
+-#             .field
+-#               = f.label 'Correo'
+-#               = f.email_field :email, autofocus: true, autocomplete: "email"
+-#           .col-5.text-center
+-#             .field
+-#               = f.label 'Contraseña'
+-#               = f.password_field :password, autocomplete: "off"  
+-#           .col-2
+-#             .actions
+-#               = f.submit "Log in", class: 'btn btn-success btn-block'
+
+.col-sm-12
+  .row.align-items-center
+    .col-sm-2.text-center
       = image_tag 'logo.png', class: 'user-nbar-logo'
-    .col-4
-    .col-6 
+    .col-sm-5
+    .col-sm-5
       = form_for(:user, url: new_user_session_path(@user)) do |f|
-        .row.justify-content-center.pt-3
-          .col-5.text-center
+        .row
+          .col-sm-4
             .field
-              = f.label 'Correo'
-              = f.email_field :email, autofocus: true, autocomplete: "email"
-          .col-5.text-center
+              -# = f.label 'Correo'
+              = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: 'form-control'
+          .col-sm-4
             .field
-              = f.label 'Contraseña'
-              = f.password_field :password, autocomplete: "off"  
-          .col-2
+              -# = f.label 'Contraseña'
+              = f.password_field :password, autocomplete: "off", placeholder: "Contraseña", class: 'form-control'
+          .col-sm-4
             .actions
               = f.submit "Log in", class: 'btn btn-success btn-block'
+        -# = render "devise/shared/links"

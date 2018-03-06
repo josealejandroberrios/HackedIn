@@ -3,7 +3,15 @@
     .row
       .col
         = image_tag 'logo.png', class: 'user-nbar-logo'
-      -if current_user.role.name != 'ADMINISTRADOR' 
+      - if current_user.role.name === 'ADMINISTRADOR'
+        .col
+          %button.btn.btn-primary
+            = link_to profile_path(current_user) do
+              %h6.text-white
+                = "#{current_user.name.first.upcase}"
+              %span.badge.text-white
+                = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
+      - elsif current_user.role.name === 'USUARIO' && current_user.profile != nil
         .col
           %button.btn.btn-primary
             = link_to profile_path(current_user.profile) do
@@ -12,13 +20,7 @@
               %span.badge.text-white
                 = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
       - else
-        .col
-          %button.btn.btn-primary
-            = link_to profile_path(current_user) do
-              %h6.text-white
-                = "#{current_user.name.first.upcase}"
-              %span.badge.text-white
-                = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
+        
       .col-
         %button.btn.btn-danger
           = link_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class: 'text-white'

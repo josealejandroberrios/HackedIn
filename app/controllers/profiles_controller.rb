@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :new]
   before_action :set_profile, only: [:show, :edit, :update]
 
   def show
@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    @profile.user = current_user
+    #@profile.user = current_user
 
     respond_to do |format|
       if @profile.save

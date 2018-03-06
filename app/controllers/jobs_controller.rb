@@ -3,6 +3,10 @@ class JobsController < ApplicationController
   before_action :set_profile, only: [:index, :create]
   before_action :set_job, only: [:edit, :update]
 
+  def form
+
+  end
+
   def index
     @jobs = Job.find_or_initialize_by(id: params[:id])
   end

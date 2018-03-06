@@ -3,6 +3,10 @@ class EducationsController < ApplicationController
   before_action :set_profile, only: [:index, :create]
   before_action :set_education, only: [:edit, :update]
 
+  def formeducation
+
+  end
+
   def index
     @eductions = Education.find_or_initialize_by(id: params[:id])
   end

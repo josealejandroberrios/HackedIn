@@ -1,12 +1,12 @@
 .col-sm-12
-  .row
+  .row.align-items-center
     .col-sm-2.text-center
       = image_tag 'logo.png', class: 'user-nbar-logo'
     .col-sm-5
     .col-sm-5
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .row.justify-content-center
-          .col-sm-4.text-center
+        .row
+          .col-sm-4
             .field
               -# = f.label 'Correo'
               = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: 'form-control'

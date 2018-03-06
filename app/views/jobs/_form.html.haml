@@ -1,0 +1,27 @@
+= form_for [:profile, @job] do |f|
+  - if @job.errors.any?
+    #error_explanation
+      %h2
+        = "#{pluralize(@job.errors.count, "error")} prohibited this job from being save:"
+      %ul
+        - @job.error.full_messages.each do |message|
+          %li
+            = message
+    
+  .form-group
+    = f.label 'Compañia'
+    = f.text_field :company, class: 'form-control'
+  .form-group
+    = f.label 'Cargo'
+    = f.text_field :position, class: 'form-control'
+  .form-group
+    = f.label 'Descripción'
+    = f.text_area :description, class: 'form-control'
+  .form-group
+    = f.label 'Desde el Año'
+    = f.date_field :start_date, class: 'form-control'
+  .form-group
+    = f.label 'Hasta el Año'
+    = f.date_field :finish_date, class: 'form-control'
+  .actions
+    = f.submit 'Guardar', class: 'btn btn-success btn-block text-white'

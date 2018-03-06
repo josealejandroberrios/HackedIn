@@ -1,0 +1,21 @@
+= form_for @level do |f|
+  - if @level.errors.any?
+    #error_explanation
+      %h2
+        = "#{pluralize(@level.errors.count, "error")} prohibited this level from being save:"
+      %ul
+        - @level.error.full_messages.each do |message|
+          %li
+            = message
+    
+  .form-group
+    = f.label 'Nombre'
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label 'Descripción Positiva'
+    = f.text_area :positive_description, class: 'form-control'
+  .form-group
+    = f.label 'Descripción Negativa'
+    = f.text_area :negative_description, class: 'form-control'
+  .actions
+    = f.submit 'Guardar', class: 'btn btn-succes btn-block'

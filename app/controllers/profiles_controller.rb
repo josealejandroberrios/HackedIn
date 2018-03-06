@@ -1,10 +1,9 @@
 class ProfilesController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
   before_action :set_profile, only: [:show, :edit, :update]
-  # skip_before_action :verify_authenticity_token
 
   def show
-    # render json: @profile
+    
   end
 
   def new
@@ -12,14 +11,6 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    # @profile = Profile.new(profile_params)
-    
-    # if @profile.save
-    #   render json: @profile, status: :created, location: @profile
-    # else
-    #   render json: @profile.errors, status: :unprocessable_entity
-    # end
-    
     @profile = Profile.new(profile_params)
     @profile.user = current_user
 
@@ -38,13 +29,7 @@ class ProfilesController < ApplicationController
 
   end
 
-  def update
-    # if @profile.update
-    #   render json: @profile
-    # else
-    #   render json: @profile.errors, status: :unprocessable_entity
-    # end
-
+  def updat
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to profile_path }
@@ -63,6 +48,6 @@ class ProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:profile).permit(:avatar, :about, :country, :user_id) ##   , :level_id
+      params.require(:profile).permit(:user_id, :avatar, :about, :country, :level_id)
     end
 end

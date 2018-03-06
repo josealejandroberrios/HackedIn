@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_profile, only: [:index, :create]
   before_action :set_job, only: [:edit, :update]
 
@@ -16,7 +16,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to  profile_jobs_path } ### Modificar el path
+        format.html { redirect_to  profile_path(@profile) } ### Modificar el path
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class JobsController < ApplicationController
   def update
     respond_to do |format|
       if @job.update(job_params)
-        format.html { redirect_to profile_jobs_path(params[:profile_id]) } ### Modificar el path
+        format.html { redirect_to profile_path(@job.profile) } ### Modificar el path
         format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }

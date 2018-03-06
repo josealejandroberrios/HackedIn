@@ -1,35 +1,28 @@
--# %h2 Sign up
--# = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
--#   = devise_error_messages!
--#   .field
--#     = f.label :name
--#     %br/
--#     = f.text_field :name
--#   .field
--#     = f.label :lastname
--#     %br/
--#     = f.text_field :lastname
--#   .field
--#     = f.label :email
--#     %br/
--#     = f.email_field :email, autofocus: true, autocomplete: "email"
--#   .field
--#     = f.label :password
--#     - if @minimum_password_length
--#       %em
--#         (#{@minimum_password_length} characters minimum)
--#     %br/
--#     = f.password_field :password, autocomplete: "off"
--#   .field
--#     = f.label :password_confirmation
--#     %br/
--#     = f.password_field :password_confirmation, autocomplete: "off"
--#   .actions
--#     = f.submit "Sign up"
--# = render "devise/shared/links"
+.row.justify-content-center
+  .col-4
+    .card.p-4
+      %h3.text-center.mb-4 Registro de Usuarios
+      = form_for(:user, as: :user, url: user_registration_path(@user)) do |f|
+        -# = user_error_messages!
+        .form-group
+          = f.label 'nombre'
+          = f.text_field :name, autofocus: true, class: 'form-control'
+        .form-group
+          = f.label 'apellido'
+          = f.text_field :lastname, class: 'form-control'
+        .form-group
+          = f.label 'email'
+          = f.email_field :email, autocomplete: "email", class: 'form-control'
+        .form-group
+          = f.label 'contraseña'
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} Caracteres minimo)
+          = f.password_field :password, autocomplete: "off", class: 'form-control'
+        .form-group
+          = f.label 'confirmacion de contraseña'
+          = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+        .actions
+          = f.submit "Ingresar", class: 'btn btn-success btn-block'
+            
 
-.row
-  .col-12.mt-3
-    = render template: 'devise/sessions/login_form'
-  .col-12.mt-5
-    = render template: 'devise/sessions/registration_form'

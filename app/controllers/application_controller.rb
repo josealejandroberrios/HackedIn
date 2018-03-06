@@ -7,4 +7,14 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :lastname])
   end
+
+  def after_sign_in_path_for(resource)
+    if current_user.role.name === "ADMINISTRADOR"
+      skills_path(@skills)
+    elsif current_user.role.name === "USUARIO"
+      profile_path(current_user.profile)
+    else
+      root_path
+    end
+  end
 end

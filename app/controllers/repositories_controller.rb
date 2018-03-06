@@ -1,5 +1,5 @@
 class RepositoriesController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_profile, only: [:index, :create]
   before_action :set_repository, only: [:edit, :update]
 
@@ -16,7 +16,7 @@ class RepositoriesController < ApplicationController
 
     respond_to do |format|
       if @repository.save
-        format.html { redirect_to  profile_repositories_path } ### Modificar el path
+        format.html { redirect_to  profile_path(@profile) } ### Modificar el path
         format.json { render :show, status: :created, location: @repository }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class RepositoriesController < ApplicationController
   def update
     respond_to do |format|
       if @repository.update(repository_params)
-        format.html { redirect_to profile_repositories_path(params[:profile_id]) } ### Modificar el path
+        format.html { redirect_to profile_path(@repository.profile) } ### Modificar el path
         format.json { render :show, status: :ok, location: @repository }
       else
         format.html { render :edit }

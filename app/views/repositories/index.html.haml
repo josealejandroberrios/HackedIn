@@ -1,0 +1,29 @@
+.col
+  .row
+    #List-Repositories.col
+      %h3 Repositorios
+      - if user_signed_in?
+        - if @profile.user_id === current_user.id
+          %button.btn.btn-success
+            = link_to 'Nuevo', new_profile_repository_path(@profile), class: 'text-white'  
+      - if @profile.repositories.empty?
+        .col
+      - else
+        - @profile.repositories.each do |repository|
+          .row
+            #Repository.col-10
+              .row
+                .col
+                  %a{:href => "https://#{repository.link}", :target => "_blank"}
+                    %p
+                      = repository.link
+            - if user_signed_in?
+              - if @profile.user_id === current_user.id
+                .col-2
+                  .row
+                    .col
+                      %button.btn.btn-success
+                        = link_to 'Editar', edit_profile_repository_path(@profile, repository), class: 'text-white'
+          
+              
+              

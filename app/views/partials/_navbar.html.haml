@@ -8,7 +8,7 @@
           = text_field_tag  class: 'flex-2 form-control mr-2', placeholder: 'Busqueda de empleados'
           = button_tag(type: "submit", class: "btn btn-primary btn-sm") do
             %p.m-0 buscar 
-            -#^aqui ^
+            -#^aqui sustitelle '%p' por un icono^
       -if current_user.role.name != 'ADMINISTRADOR' 
         .col-auto.mt-3
           %div

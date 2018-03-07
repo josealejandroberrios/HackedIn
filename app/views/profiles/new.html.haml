@@ -1,6 +1,7 @@
-.row.justify-content-center
-  .col-4
-    .card.p-4
-      %h2.text-center.mb-4 Bienvenido #{current_user.name.titleize} #{current_user.lastname.titleize}
-      %h3.text-center.mb-4 Comenzemos a crear el Perfil!!
-      = render 'form'           
+.col-12
+  .row.justify-content-center
+    .col-4
+      .card.p-4
+        %h2.text-center.mb-4 Bienvenido #{current_user.name.titleize} #{current_user.lastname.titleize}
+        %h3.text-center.mb-4 Comenzemos a crear el Perfil!!
+        = render 'form'           

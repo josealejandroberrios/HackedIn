@@ -42,42 +42,44 @@
 
 - if user_signed_in?
   #Nav.col
-    .row.d-flex.justify-content-center
-      .col.col-xl-3.mt-2.d-flex.justify-content-end.pr-0
+    .row.align-items-center
+      .col-2.text-center
         = image_tag 'logo.png', class: 'user-nbar-logo'
 
-      -# ↓↓↓ buscador ↓↓↓          
+      -# ----- Buscador -----        
       
-      .col-auto.col-lg.mt-3
+      .col-6.text-center
         = form_tag  class: 'form-inline' do
           = text_field_tag  class: 'flex-2 form-control mr-2', placeholder: 'Busqueda de empleados'
           = button_tag(type: "submit", class: "btn btn-primary btn-sm") do
-            %p.m-0 buscar 
+            %p.m-0 Buscar 
             -#^aqui arriba sustitelle '%p' por un icono^
-      -if current_user.role.name === 'ADMINISTRADOR' 
-        .col-auto.mt-3
-          %div
-            %button.btn.btn-primary.position-absolute.rounded-circle
-              = link_to profile_path(current_user) do
-                %h6.text-white.m-0
-                  = "#{current_user.name.first.upcase}"
-            .bg-light.ml-4.p-1
-              = link_to profile_path(current_user), class: "m-1"  do
-                %span.badge.text-dark
-                  = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
-      - elsif current_user.role.name === 'USUARIO' && current_user.profile != nil
-        .col-auto.mt-3
-          %div
-            %button.btn.btn-primary.position-absolute.rounded-circle
-              = link_to profile_path(current_user.profile) do
-                %h6.text-white.m-0
-                  = "#{current_user.name.first.upcase}"
-            .bg-light.ml-4.p-1 
-              = link_to profile_path(current_user.profile), class: "m-1"  do                           
-                %span.badge.text-dark
-                  = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
-      .col.col-xl-3.mt-3
-        %button.btn.btn-danger.btn-sm
-          = link_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class: 'text-white'
+      .col-4
+        .row
+          -if current_user.role.name === 'ADMINISTRADOR' 
+            .col-6
+              %div
+                %button.btn.btn-primary.position-absolute.rounded-circle
+                  = link_to profile_path(current_user) do
+                    %h6.text-white.m-0
+                      = "#{current_user.name.first.upcase}"
+                .bg-light.ml-4.p-1
+                  = link_to profile_path(current_user), class: "m-1"  do
+                    %span.badge.text-dark
+                      = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
+          - elsif current_user.role.name === 'USUARIO' && current_user.profile != nil
+            .col-8
+              %div
+                %button.btn.btn-primary.position-absolute.rounded-circle
+                  = link_to profile_path(current_user.profile) do
+                    %h6.text-white.m-0
+                      = "#{current_user.name.first.upcase}"
+                .bg-light.ml-4.p-1 
+                  = link_to profile_path(current_user.profile), class: "m-1"  do                           
+                    %span.badge.text-dark
+                      = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
+          .col-4
+            %button.btn.btn-danger.btn-sm.btn-block
+              = link_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class: 'text-white'
 - else
   = render template: 'devise/sessions/new'

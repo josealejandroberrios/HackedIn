@@ -1,44 +1,42 @@
 .col
   .row
-    #List-Educations.col
+    #List-Educations.col-10
       %h3 Formación
+    .col-2.text-center
       - if user_signed_in?
         - if @profile.user_id === current_user.id
-          %button.btn.btn-success
-            = link_to 'Nuevo', new_profile_education_path(@profile), class: 'text-white'
-      - if @profile.educations.empty?
-        .col
-      - else
-        - @profile.educations.each do |education|
+          = link_to new_profile_education_path(@profile) do
+            = fa_icon "plus-circle", class: "fa-2x text-success" 
+  - if @profile.educations.empty?
+    .col
+  - else
+    .row.mt-4  
+      - @profile.educations.each do |education|
+        #Education.col-10
           .row
-            #Education.col-10
-              .row
-                .col
-                  %h5
-                    = education.place
-              .row
-                .col
-                  %h5
-                    = education.qualification
-              .row
-                .col
-                  %h5
-                    = education.discipline
-              .row
-                .col
-                  %h5
-                    = "#{education.start_date} al #{education.finish_date}"
-                  %hr/
+            .col
+              %h5
+                = education.place
+          .row
+            .col
+              %h6
+                = education.qualification
+          .row
+            .col
+              %h6
+                = education.discipline
+          .row
+            .col
+              %h6
+                = "#{education.start_date} al #{education.finish_date}"
+              %hr/
+        .col-2
+          .row
             - if user_signed_in?
               - if @profile.user_id === current_user.id
-                .col-2
-                  .row
-                    .col
-                      %button.btn.btn-success
-                        = link_to 'Editar', edit_profile_education_path(@profile, education), class: 'text-white'
-            
-
-          
-        
-              
-              
+                .col-6.text-right
+                  = link_to edit_profile_education_path(@profile, education) do
+                    = fa_icon "pencil", class: "fa-lg text-secondary"
+                .col-6.text-right
+                  = link_to "" do
+                    = fa_icon "trash", class: "fa-lg text-danger"

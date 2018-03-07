@@ -1,18 +1,20 @@
 #Profile.col
   .row.justify-content-center
     #Profile-Data.card.p-4.col-8
-      #Personal-Information.row.border.border-secondary
+      #Personal-Information.row.border.border-secondary.p-3
         #Avatar.col-3
           %h2 Avatar
-        #Personal-Data.col-9
+        #Personal-Data.col-7
           %h3#FullName 
             = "#{@profile.user.name.titleize} #{@profile.user.lastname.titleize}"
           %h3#Email
             = "#{@profile.user.email}"
           %h3#Country
             = @profile.country
-          #Repositories.row.p-3
+          #Repositories.row.mt-5
             = render template: 'repositories/index'
+        #Edit-Button.col-2.text-center
+          = fa_icon "pencil", class: "fa-2x text-secondary"
       #Description.row.border.border-secondary
         .col
           %h2 Descripión

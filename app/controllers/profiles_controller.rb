@@ -12,11 +12,11 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    #@profile.user = current_user
+    @profile.user = current_user
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to profile_path }
+        format.html { redirect_to profile_path(@profile) }
         format.json { render :show, status: :created, location: @profile }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class ProfilesController < ApplicationController
   def updat
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to profile_path }
+        format.html { redirect_to profile_path(@profile) }
         format.json { render :show, status: :ok, location: @profile }
       else
         format.html { render :edit }

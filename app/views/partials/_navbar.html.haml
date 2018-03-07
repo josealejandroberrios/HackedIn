@@ -4,7 +4,11 @@
       .col-2.mt-1
         = image_tag 'logo.png', class: 'user-nbar-logo'
       .col-4
-        
+        = form_tag  class: 'form-inline' do
+          = text_field_tag  class: 'flex-2 form-control mr-2', placeholder: 'Busqueda de empleados'
+          = button_tag(type: "submit", class: "btn btn-primary my-2") do
+            %p.m-0 buscar 
+            -#^aqui ^
       -if current_user.role.name != 'ADMINISTRADOR' 
         .col-3.mt-3
           %button.btn.btn-primary.position-absolute.rounded-circle

@@ -9,12 +9,20 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if current_user.role.name === "ADMINISTRADOR"
-      skills_path(@skills)
+    if current_user.profile == nil
+      if current_user.role.name === "ADMINISTRADOR"
+        skills_path(@skills)    #### Cuando haya panel cambiarlo
+      else
+        new_profile_path(@profile)
+      end
     elsif current_user.role.name === "USUARIO"
-      profile_path(current_user.profile)
+      profile_path(current_user.profile) 
     else
       root_path
     end
   end
+
+  # def after_sign_up_path_for(resource_or_scope)
+  #   new_profile_path(@profile)
+  # end
 end

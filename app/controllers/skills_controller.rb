@@ -42,12 +42,18 @@ class SkillsController < ApplicationController
    end
 
    def add
-    # @profile = Profile.find(id: params[:profile_id])
-    @skills = Skill.all
+    # # @profile = Profile.find(id: params[:profile_id])
+    # @skills = Skill.all
+    # @skills.requirements
+
+    # @requirement = 
    end
 
    def added
-    #### falta por agregar vista y lo que va en el metodo
+    # @profile.skills << @skill
+
+    # @requirement.fullfillment << requirement_ids
+    
    end
  
    private

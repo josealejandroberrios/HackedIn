@@ -1,41 +1,45 @@
 .col
   .row
-    #List-Jobs.col
+    #List-Jobs.col-10
       %h3 Experiencia
+    .col-2.text-center
       - if user_signed_in?
         - if @profile.user_id === current_user.id
-          %button.btn.btn-success
-            = link_to 'Nuevo', new_profile_job_path(@profile), class: 'text-white'
-      - if @profile.jobs.empty?
-        .col
-      - else
-        - @profile.jobs.each do |job|
+          = link_to new_profile_job_path(@profile) do
+            = fa_icon "plus-circle", class: "fa-2x text-success"      
+  - if @profile.jobs.empty?
+    .col
+  - else
+    .row.mt-4  
+      - @profile.jobs.each do |job|
+        #Job.col-10
           .row
-            #Job.col-10
-              .row
-                .col
-                  %h5
-                    = job.company
-              .row
-                .col
-                  %h5
-                    = job.position
-              .row
-                .col
-                  %h5
-                    = job.description
-              .row
-                .col
-                  %h5
-                    = "#{job.start_date} al #{job.finish_date}"
-                  %hr/
+            .col
+              %h5
+                = job.company
+          .row
+            .col
+              %h6
+                = job.position
+          .row
+            .col
+              %p
+                = job.description
+          .row
+            .col
+              %h6
+                = "#{job.start_date} al #{job.finish_date}"
+              %hr/
+        .col-2
+          .row
             - if user_signed_in?
               - if @profile.user_id === current_user.id
-                .col-2
-                  .row
-                    .col
-                      %button.btn.btn-success
-                        = link_to 'Editar', edit_profile_job_path(@profile, job), class: 'text-white' 
+                .col-6.text-right
+                  = link_to edit_profile_job_path(@profile, job) do
+                    = fa_icon "pencil", class: "fa-lg text-secondary"
+                .col-6.text-right
+                  = link_to "" do
+                    = fa_icon "trash", class: "fa-lg text-danger"
 
           
         

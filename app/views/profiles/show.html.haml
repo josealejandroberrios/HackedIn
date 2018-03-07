@@ -1,7 +1,7 @@
-#Profile.col.mt-5
+#Profile.col
   .row.justify-content-center
-    #Profile-Data.card.p-4.col-8
-      #Personal-Information.row.border.border-secondary.p-3
+    #Profile-Data.card.p-5.col-8.profile-border-shadow
+      #Personal-Information.row.border.border-light.p-3.rounded.profile-border-shadow
         #Avatar.col-3
           %h2 Avatar
         #Personal-Data.col-7
@@ -15,19 +15,22 @@
             = render template: 'repositories/index'
         #Edit-Button.col-2.text-center
           = fa_icon "pencil", class: "fa-2x text-secondary"
-      #Description.row.border.border-secondary
-        .col
+      #Description.row.border.border-light.p-3.mt-3.rounded.profile-border-shadow
+        .col-10
           %h2 Descripión
-          .row
-            .col
-              %p
-                = @profile.about
-      #Levels.row.border.border-secondary
+        .col-2.text-center
+          = link_to "" do
+            = fa_icon "pencil", class: "fa-2x text-secondary"
+        .row
+          .col.ml-5.mt-4
+            %p
+              = @profile.about
+      #Levels.row.border.border-light.mt-3.p-3.rounded.profile-border-shadow
         .col
           %h2 Nivel
-      #Experiencies.row.border.border-secondary
+      #Jobs.row.border.border-light.mt-3.p-3.rounded.profile-border-shadow
         = render template: 'jobs/index'
-      #Educations.row.border.border-secondary
+      #Educations.row.border.border-light.mt-3.p-3.rounded.profile-border-shadow
         = render template: 'educations/index'
-      #Skills.row.border.border-secondary
+      #Skills.row.border.border-light.mt-3.p-3.rounded.profile-border-shadow
         = render template: 'skills/index'

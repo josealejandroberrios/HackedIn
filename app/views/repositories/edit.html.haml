@@ -1,6 +1,7 @@
-.row.justify-content-center
-  #Edit-Repository.col-4
-    .card.p-4
-      %h3.text-center.mb-4 Editar
-      = render 'form', role: @repository
-      = link_to 'Cancelar', profile_path(params[:profile_id])
+.col-12
+  .row.justify-content-center
+    #Edit-Repository.col-4
+      .card.p-4
+        %h3.text-center.mb-4 Editar
+        = render 'form', role: @repository
+        = link_to 'Cancelar', profile_path(params[:profile_id])

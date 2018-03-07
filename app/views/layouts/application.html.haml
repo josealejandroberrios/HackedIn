@@ -8,5 +8,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .container-fluid.bc
-      = render partial: 'partials/navbar'
-      = yield
+      .row.pt-3
+        = render partial: 'partials/navbar'
+      .row.pt-5
+        = yield

@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     elsif current_user.role.name === "USUARIO"
       profile_path(current_user.profile)
     else
-      root_path
+      new_profile_path
     end
   end
 end

@@ -3,6 +3,9 @@
     .row.d-flex.justify-content-center
       .col.col-xl-3.mt-2.d-flex.justify-content-end.pr-0
         = image_tag 'logo.png', class: 'user-nbar-logo mr-3 mr-lg-5'
+
+      -#↓↓↓ buscador ↓↓↓          
+      
       .col-auto.col-lg.mt-3
         = form_tag  class: 'form-inline' do
           = text_field_tag  class: 'flex-2 form-control mr-2', placeholder: 'Busqueda de empleados'

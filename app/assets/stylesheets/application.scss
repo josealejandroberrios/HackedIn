@@ -3,10 +3,18 @@
 
 
 
- a.card-header.ml-3.pt-2{
-    border-bottom-right-radius: 76%;
-    border-top-left-radius: 78%;
-    border-top-right-radius: 87%;
-    border-bottom-left-radius: 43%;
-}
  
+ @import "font-awesome";
+
+.container-fluid{
+  min-height: 100vh;
+  height: auto;
+}
+
+
+.bg-light.ml-4.p-1{
+  border-bottom-right-radius: 140px;
+  border-top-left-radius: 140px;
+  border-top-right-radius: 140px;
+  border-bottom-left-radius: 140px;
+}

@@ -1,29 +1,63 @@
+-# .col
+-#   .row
+-#     #List-Repositories.col
+-#       .row
+-#         .col-8
+-#           %h3 Repositorios
+-#         .col.2.mb-4
+-#           - if user_signed_in?
+-#             - if @profile.user_id === current_user.id
+-#               = link_to new_profile_repository_path(@profile) do
+-#                 = fa_icon "plus-circle", class: "fa-lg text-success"
+-#       - if @profile.repositories.empty?
+-#         .col
+-#       - else
+-#         - @profile.repositories.each do |repository|
+-#           .row
+-#             #Repository.col-8
+-#               .row
+-#                 .col
+-#                   %a{:href => "https://#{repository.link}", :target => "_blank"}
+-#                     %p
+-#                       = repository.link
+-#             - if user_signed_in?
+-#               - if @profile.user_id === current_user.id
+-#                 .col-2
+-#                   .row
+-#                     .col
+-#                       = link_to edit_profile_repository_path(@profile, repository) do
+-#                         = fa_icon "pencil", class: "fa-lg text-success"
+
 .col
   .row
-    #List-Repositories.col
-      %h3 Repositorios
+    .col-10
+      %h3 Repositorios:
+    .col-2.text-right
       - if user_signed_in?
         - if @profile.user_id === current_user.id
-          %button.btn.btn-success
-            = link_to 'Nuevo', new_profile_repository_path(@profile), class: 'text-white'  
-      - if @profile.repositories.empty?
-        .col
-      - else
-        - @profile.repositories.each do |repository|
-          .row
-            #Repository.col-10
+          = link_to new_profile_repository_path(@profile) do
+            = fa_icon "plus-circle", class: "fa-lg text-success"
+  .row.pl-5.mt-4
+    - if @profile.repositories.empty?
+      .col
+    - else
+      #Repository.col
+        .row
+          - @profile.repositories.each do |repository|
+            .col-8
+              %a{:href => "https://#{repository.link}", :target => "_blank"}
+                %p
+                  = repository.link
+            .col-4
               .row
-                .col
-                  %a{:href => "https://#{repository.link}", :target => "_blank"}
-                    %p
-                      = repository.link
-            - if user_signed_in?
-              - if @profile.user_id === current_user.id
-                .col-2
-                  .row
-                    .col
-                      %button.btn.btn-success
-                        = link_to 'Editar', edit_profile_repository_path(@profile, repository), class: 'text-white'
-          
+                - if user_signed_in?
+                  - if @profile.user_id === current_user.id
+                    .col-6.text-right
+                      = link_to edit_profile_repository_path(@profile, repository) do
+                        = fa_icon "pencil", class: "fa-lg text-secondary"
+                    .col-6.text-right
+                      = link_to "" do
+                        = fa_icon "trash", class: "fa-lg text-danger"
+                        
               
               

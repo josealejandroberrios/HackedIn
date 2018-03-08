@@ -1,0 +1,28 @@
+.col-sm-12.px-0
+ 
+  %nav.navbar.navbar-light.p-0
+    .col.d-flex.justify-content-center
+      %h5.m-0  Encuentra compañeros de trabajo
+    .col
+
+      -#  NT: ↓↓ (user_session_path) lo use solo para ver la vista igual para (method: :get) cambielos segun les convenga ↓↓
+
+      = form_tag user_session_path, class: '',  method: :get do 
+        .row
+          .col-4
+
+            = text_field_tag "", "", placeholder: "Nombre", class: 'form-control'
+          .col-4
+
+            = text_field_tag "", "", placeholder: 'Apellido', class: 'form-control'
+          .col-4
+
+            = button_tag(type: "submit", class: "btn btn-success btn-block") do
+    
+              %p.m-0 buscar
+
+
+-#            
+-#  = form_tag _search_path, class: 'form-inline', method: :get do
+-#      = text_field_tag :keywords, params[:keywords], class: 'flex-2 form-control mr-2', placeholder: 'Busqueda de empleados'
+

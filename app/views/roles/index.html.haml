@@ -1,26 +1,31 @@
-.row.justify-content-center
-  #List-Roles.col-8
-    .card.p-4
-      %h3.text-center 
-        Roles Cargados
-      %button.btn.btn-success
-        = link_to 'Nuevo Rol', new_role_path, class: 'text-white'
-      - if @roles.empty?
-        %h4 
-          No Existen Roles Cargados
-      - else
-        %table.table
-          %thead
-            %tr
-              %th Nombre
-              %th Acciones
-          %tbody
-            - @roles.each do |role|
-              %tr
-                %td
-                  = role.name
-                %td
-                  %button.btn.btn-success
-                    = link_to 'Editar', edit_role_path(role), class: 'text-white'
-                  %button.btn.btn-success
-                    = link_to 'Eliminar', role_path(role), method: :delete, data: { confirm: "Desea Eliminar este Rol?" }, class: 'text-white'
+- if user_signed_in?
+  - if current_user.role.name === 'ADMINISTRADOR'
+    .row.justify-content-center
+      #List-Roles.col-8
+        .card.p-4
+          %h3.text-center 
+            Roles Cargados
+          %button.btn.btn-success
+            = link_to 'Nuevo Rol', new_role_path, class: 'text-white'
+          - if @roles.empty?
+            %h4 
+              No Existen Roles Cargados
+          - else
+            %table.table
+              %thead
+                %tr
+                  %th Nombre
+                  %th Acciones
+              %tbody
+                - @roles.each do |role|
+                  %tr
+                    %td
+                      = role.name
+                    %td
+                      %button.btn.btn-success
+                        = link_to 'Editar', edit_role_path(role), class: 'text-white'   #### colocar font awesome
+                      %button.btn.btn-success
+                        = link_to 'Eliminar', role_path(role), method: :delete, data: { confirm: "Desea Eliminar este Rol?" }, class: 'text-white' #### colocar font awesome
+  - else 
+    .col
+      %h3 no tienes permiso

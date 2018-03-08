@@ -10,7 +10,7 @@
   - if @profile.jobs.empty?
     .col
   - else
-    .row.mt-4  
+    .row.ml-5.mt-4.mr-5
       - @profile.jobs.each do |job|
         #Job.col-10
           .row
@@ -39,7 +39,7 @@
                     = fa_icon "pencil", class: "fa-lg text-secondary"
                 .col-6.text-right
                   = link_to "" do
-                    = fa_icon "trash", class: "fa-lg text-danger"
+                    = fa_icon "trash", class: "fa-lg text-danger"  ##### falta agregar la ruta del destroy
 
           
         

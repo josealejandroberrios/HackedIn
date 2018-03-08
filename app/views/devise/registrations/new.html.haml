@@ -1,28 +1,27 @@
-.row.justify-content-center
-  .col-4
-    .card.p-4
-      %h3.text-center.mb-4 Registro de Usuarios
-      = form_for(:user, as: :user, url: user_registration_path(@user)) do |f|
-        -# = user_error_messages!
-        .form-group
-          = f.label 'nombre'
-          = f.text_field :name, autofocus: true, class: 'form-control'
-        .form-group
-          = f.label 'apellido'
-          = f.text_field :lastname, class: 'form-control'
-        .form-group
-          = f.label 'email'
-          = f.email_field :email, autocomplete: "email", class: 'form-control'
-        .form-group
-          = f.label 'contraseña'
-          - if @minimum_password_length
-            %em
-              (#{@minimum_password_length} Caracteres minimo)
-          = f.password_field :password, autocomplete: "off", class: 'form-control'
-        .form-group
-          = f.label 'confirmacion de contraseña'
-          = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
-        .actions
-          = f.submit "Ingresar", class: 'btn btn-success btn-block'
-            
-
+.col-12
+  .row.justify-content-center
+    .col-4
+      .card.p-4
+        %h3.text-center.mb-4 Registro de Usuarios
+        = form_for(:user, as: :user, url: user_registration_path(@user)) do |f|
+          -# = user_error_messages!
+          .form-group
+            = f.label 'Nombre'
+            = f.text_field :name, autofocus: true, class: 'form-control'
+          .form-group
+            = f.label 'Apellido'
+            = f.text_field :lastname, class: 'form-control'
+          .form-group
+            = f.label 'Email'
+            = f.email_field :email, autocomplete: "email", class: 'form-control'
+          .form-group
+            = f.label 'Contraseña (6 Caracteres Minimo)'
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} Caracteres minimo)
+            = f.password_field :password, autocomplete: "off", class: 'form-control'
+          .form-group
+            = f.label 'Confirmacion de Contraseña'
+            = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+          .actions
+            = f.submit "Ingresar", class: 'btn btn-success btn-block'

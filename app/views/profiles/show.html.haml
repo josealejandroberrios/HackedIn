@@ -2,8 +2,8 @@
   .row.justify-content-center
     #Profile-Data.card.p-5.col-8.profile-border-shadow
       #Personal-Information.row.border.border-light.p-3.rounded.profile-border-shadow
-        #Avatar.col-3
-          %h2 Avatar
+        #Avatar.col-3.text-center 
+          = image_tag @profile.avatar.url(:medium), class: "image-profile rounded-circle" 
         #Personal-Data.col-7
           %h3#FullName 
             = "#{@profile.user.name.titleize} #{@profile.user.lastname.titleize}"

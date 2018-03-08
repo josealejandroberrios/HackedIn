@@ -14,12 +14,6 @@ Rails.application.routes.draw do
   
   resources :profiles, only: [:show, :new, :create, :edit, :update]  do  
     resources :repositories, only: [:new, :create, :edit, :update]
-    # # resources :levels, except: [:index, :show, :new, :create, :edit, :update, :destroy] do
-    #   collection do
-    #     get 'add'
-    #     post 'added'
-    #   end
-    # end
     resources :jobs, only: [:new, :create, :edit, :update]
     resources :educations, only: [:new, :create, :edit, :update]
     resources :skills, except: [:index, :show, :new, :create, :edit, :update, :destroy] do
@@ -27,6 +21,11 @@ Rails.application.routes.draw do
         get 'add'
         post 'added'
       end
+    end
+
+    member do
+      get 'levels/add' => 'profiles#level_add'
+      post 'levels/added' => 'profiles#level_added'
     end
       
   end

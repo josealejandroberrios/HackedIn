@@ -3,11 +3,12 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update]
 
   def show
-    
+    @levels = Level.all
   end
 
   def new
     @profile = Profile.new
+    @levels = Level.all
   end
 
   def create
@@ -29,7 +30,7 @@ class ProfilesController < ApplicationController
 
   end
 
-  def updat
+  def update
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to profile_path(@profile) }
@@ -40,6 +41,17 @@ class ProfilesController < ApplicationController
       end
     end
   end
+
+  #### TODAVIA FALTA 
+  def level_add
+    @levels = Level.all
+  end
+
+  private
+    
+    def set_profile
+      @profile = Profile.find(params[:id])
+    end
 
   private
     

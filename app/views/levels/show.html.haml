@@ -1,0 +1,35 @@
+.col
+  .row
+    #List-Skills.col-10
+      %h3 Nivel
+    .col-2.text-center
+      - if user_signed_in?
+        - if @profile.user_id === current_user.id
+          = link_to edit_profile_path(@profile) do
+            = fa_icon "pencil", class: "fa-2x text-secondary"
+      -### pinta el nivel seleccionado mas los anteriores
+    .col.ml-5.mt-4.mr-5
+      .row
+        - @levels.each do |level_position|
+          - if level_position.id < @profile.level_id
+            
+            .col
+              %p
+                = level_position.name
+              %hr/
+              %strong Descripcion Positiva:
+              %p
+                = level_position.positive_description
+              %hr/
+        .col
+          %p
+            = @profile.level.name
+          %hr/
+          %strong Descripcion Positiva: 
+          %p
+            = @profile.level.positive_description
+          %hr/
+          %strong Descripcion Negativa:
+          %p
+            = @profile.level.negative_description
+          %hr/

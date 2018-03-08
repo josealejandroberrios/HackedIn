@@ -14,20 +14,20 @@
           #Repositories.row.mt-5
             = render template: 'repositories/index'
         #Edit-Button.col-2.text-center
-          = fa_icon "pencil", class: "fa-2x text-secondary"
+          = link_to edit_profile_path(@profile) do
+            = fa_icon "pencil", class: "fa-2x text-secondary"
       #Description.row.border.border-light.p-3.mt-3.rounded.profile-border-shadow
         .col-10
           %h2 Descripión
-        .col-2.text-center
-          = link_to "" do
-            = fa_icon "pencil", class: "fa-2x text-secondary"
+        .col-2.text-center  
+          = link_to edit_profile_path(@profile) do
+            = fa_icon "pencil", class: "fa-2x text-secondary" #### verificar esto
         .row
-          .col.ml-5.mt-4
+          .col.ml-5.mt-4.mr-5
             %p
               = @profile.about
       #Levels.row.border.border-light.mt-3.p-3.rounded.profile-border-shadow
-        .col
-          %h2 Nivel
+        = render template: 'levels/show'
       #Jobs.row.border.border-light.mt-3.p-3.rounded.profile-border-shadow
         = render template: 'jobs/index'
       #Educations.row.border.border-light.mt-3.p-3.rounded.profile-border-shadow

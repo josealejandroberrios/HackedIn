@@ -5,7 +5,7 @@
         .card.p-4
           %h3.text-center Habilidades Cargadas
           %button.btn.btn-success
-            = link_to 'Nueva Habilidad', new_skill_path, class: 'text-white'
+            = link_to 'Nueva Habilidad', new_skill_path, class: 'text-white' ### colocar font awesome
           - if @skills.empty?
             %h4 No Existen Habilidades Cargadas
           - else
@@ -25,9 +25,9 @@
                         = "#{index + 1}-) #{requirement.name}, "
                     %td
                       %button.btn.btn-success
-                        = link_to 'Editar', edit_skill_path(skill), class: 'text-white'
+                        = link_to 'Editar', edit_skill_path(skill), class: 'text-white' ### colocar font awesome
                       %button.btn.btn-success
-                        = link_to 'Eliminar', skill_path(skill), method: :delete, data: { confirm: "Desea Eliminar esta Habilidad?" }, class: 'text-white'
+                        = link_to 'Eliminar', skill_path(skill), method: :delete, data: { confirm: "Desea Eliminar esta Habilidad?" }, class: 'text-white' ### colocar font awesome
   - else
     .col
       .row
@@ -36,7 +36,7 @@
           - if user_signed_in?
             - if @profile.user_id === current_user.id
               %button.btn.btn-success
-                = link_to 'Añadir', add_profile_skills_path(@profile), class: 'text-white' 
+                = link_to 'Añadir', add_profile_skills_path(@profile), class: 'text-white' ### colocar font awesome
           - if @profile.skills.empty?
             .col
           - else

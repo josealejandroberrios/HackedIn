@@ -12,3 +12,6 @@
         = render partial: 'partials/navbar'
       .row.pt-5
         = yield
+      - if user_signed_in? == false
+        .row.py-5
+          = render partial: 'partials/footer'

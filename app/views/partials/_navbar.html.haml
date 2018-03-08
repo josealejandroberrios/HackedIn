@@ -48,12 +48,15 @@
 
       -# ↓↓↓ buscador ↓↓↓          
       
-      .col-auto.col-lg.mt-3
-        = form_tag  class: 'form-inline' do
-          = text_field_tag  class: 'flex-2 form-control mr-2', placeholder: 'Busqueda de empleados'
-          = button_tag(type: "submit", class: "btn btn-primary btn-sm") do
-            %p.m-0 buscar 
-            -#^aqui arriba sustitelle '%p' por un icono^
+      .col-auto.col-lg.d-flex.justify-content-lg-start.pb-2
+        = form_tag "", class: 'form-inline', method: :get do
+          .row
+            .col-9.p-0
+              = text_field_tag "", "", class: 'form-control', placeholder: 'Busqueda de empleados'
+            .col-2.px-2          
+              = button_tag(type: "submit", class: "btn btn-primary") do
+                = fa_icon "search"
+      
       -if current_user.role.name === 'ADMINISTRADOR' 
         .col-auto.mt-3
           %div

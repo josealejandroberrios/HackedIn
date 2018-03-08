@@ -1,7 +1,8 @@
-.row.justify-content-center
-  #Edit-Skill.col-4
-    .card.p-4
-      %h3.text-center.mb-4 Editar Habilidad
-      = render 'form', skill: @skill
-      = link_to 'Volver', skills_path   #### Agregar cuando se tenga el index
+.col
+  .row.justify-content-center
+    #Edit-Skill.col-4
+      .card.p-4
+        %h3.text-center.mb-4 Editar Habilidad
+        = render 'form', skill: @skill
+        = link_to 'Volver', skills_path   #### Agregar cuando se tenga el index
 

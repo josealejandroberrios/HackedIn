@@ -1,7 +1,8 @@
 .col
   .row
     #List-Jobs.col-10
-      %h3 Experiencia
+      %h3 
+        %ins Experiencia
     .col-2.text-center
       - if user_signed_in?
         - if @profile.user_id === current_user.id
@@ -16,19 +17,21 @@
           .row
             .col
               %h5
-                = job.company
+                %strong
+                  = job.company
           .row
             .col
               %h6
                 = job.position
           .row
             .col
-              %p
+              .blockquote-footer
                 = job.description
           .row
             .col
               %h6
-                = "#{job.start_date} al #{job.finish_date}"
+                %small
+                  = "#{job.start_date} al #{job.finish_date}"
               %hr/
         .col-2
           .row

@@ -1,6 +1,7 @@
-.row.justify-content-center
-  #NeW-Level.col-4
-    .card.p-4
-      %h3.text-center.mb-4 Nuevo Nivel
-      = render 'form'
-      = link_to 'Volver', levels_path   #### Agregar cuando se tenga el index
+.col
+  .row.justify-content-center
+    #NeW-Level.col-4
+      .card.p-4
+        %h3.text-center.mb-4 Nuevo Nivel
+        = render 'form'
+        = link_to 'Regresar', levels_path

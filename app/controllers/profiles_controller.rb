@@ -12,6 +12,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
+    @levels = Level.all
     @profile = Profile.new(profile_params)
     @profile.user = current_user
 

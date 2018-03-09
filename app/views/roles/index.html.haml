@@ -1,31 +1,37 @@
 - if user_signed_in?
   - if current_user.role.name === 'ADMINISTRADOR'
-    .row.justify-content-center
-      #List-Roles.col-8
-        .card.p-4
-          %h3.text-center 
-            Roles Cargados
-          %button.btn.btn-success
-            = link_to 'Nuevo Rol', new_role_path, class: 'text-white'
-          - if @roles.empty?
-            %h4 
-              No Existen Roles Cargados
-          - else
-            %table.table
-              %thead
-                %tr
-                  %th Nombre
-                  %th Acciones
-              %tbody
-                - @roles.each do |role|
+    #List-Roles.col
+      .row.justify-content-center
+        .col-4.card.p-5
+          .row
+            .col
+              %h3.text-center 
+                Roles Cargados
+            .col-2.tex-center
+              = link_to new_role_path do
+                = fa_icon "plus-circle", class: "fa-2x text-success"
+            - if @roles.empty?
+              %h4 
+                No Existen Roles Cargados
+            - else
+              %table.table.mt-2
+                %thead
                   %tr
-                    %td
-                      = role.name
-                    %td
-                      %button.btn.btn-success
-                        = link_to 'Editar', edit_role_path(role), class: 'text-white'   #### colocar font awesome
-                      %button.btn.btn-success
-                        = link_to 'Eliminar', role_path(role), method: :delete, data: { confirm: "Desea Eliminar este Rol?" }, class: 'text-white' #### colocar font awesome
+                    %th Nombre
+                    %th Acciones
+                %tbody
+                  - @roles.each do |role|
+                    %tr
+                      %td
+                        = role.name
+                      %td
+                        = link_to edit_role_path(role) do
+                          = fa_icon "pencil", class: "fa-lg text-secondary mr-2"
+                        = link_to "" do
+                          = fa_icon "trash", class: "fa-lg text-danger"   #### #### agregar ruta de elimnar
+          .row
+            .col.text-center
+              = link_to 'Regresar', admin_path, class: 'text-center'
   - else 
     .col
       %h3 no tienes permiso

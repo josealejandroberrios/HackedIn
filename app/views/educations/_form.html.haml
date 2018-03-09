@@ -1,27 +1,33 @@
-= form_for [:profile, @education] do |f|
-  - if @education.errors.any?
-    #error_explanation
-      %h2
-        = "#{pluralize(@education.errors.count, "error")} prohibited this education from being save:"
-      %ul
-        - @education.error.full_messages.each do |message|
-          %li
-            = message
-    
+= form_for [:profile, @education] do |f|  
   .form-group
     = f.label 'Universidad'
     = f.text_field :place, class: 'form-control'
+    - if @education.errors[:place].any?
+      .text-danger 
+        = @education.errors[:place].to_s[/\w([^"]*)/]
   .form-group
     = f.label 'Titulo'
     = f.text_field :qualification, class: 'form-control'
+    - if @education.errors[:qualification].any?
+      .text-danger 
+        = @education.errors[:qualification].to_s[/\w([^"]*)/]
   .form-group
     = f.label 'Disciplina'
     = f.text_field :discipline, class: 'form-control'
+    - if @education.errors[:discipline].any?
+      .text-danger 
+        = @education.errors[:discipline].to_s[/\w([^"]*)/]
   .form-group
     = f.label 'Desde el Año'
     = f.date_field :start_date, class: 'form-control'
+    - if @education.errors[:start_date].any?
+      .text-danger 
+        = @education.errors[:start_date].to_s[/\w([^"]*)/]
   .form-group
     = f.label 'Hasta el Año'
     = f.date_field :finish_date, class: 'form-control'
+    - if @education.errors[:finish_date].any?
+      .text-danger 
+        = @education.errors[:finish_date].to_s[/\w([^"]*)/]
   .actions
     = f.submit 'Guardar', class: 'btn btn-success btn-block text-white'

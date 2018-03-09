@@ -1,37 +1,8 @@
--# .col
--#   .row
--#     #List-Repositories.col
--#       .row
--#         .col-8
--#           %h3 Repositorios
--#         .col.2.mb-4
--#           - if user_signed_in?
--#             - if @profile.user_id === current_user.id
--#               = link_to new_profile_repository_path(@profile) do
--#                 = fa_icon "plus-circle", class: "fa-lg text-success"
--#       - if @profile.repositories.empty?
--#         .col
--#       - else
--#         - @profile.repositories.each do |repository|
--#           .row
--#             #Repository.col-8
--#               .row
--#                 .col
--#                   %a{:href => "https://#{repository.link}", :target => "_blank"}
--#                     %p
--#                       = repository.link
--#             - if user_signed_in?
--#               - if @profile.user_id === current_user.id
--#                 .col-2
--#                   .row
--#                     .col
--#                       = link_to edit_profile_repository_path(@profile, repository) do
--#                         = fa_icon "pencil", class: "fa-lg text-success"
-
 .col
   .row
     .col-10
-      %h3 Repositorios:
+      %h3 
+        %ins Repositorios:
     .col-2.text-right
       - if user_signed_in?
         - if @profile.user_id === current_user.id

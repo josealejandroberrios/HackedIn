@@ -1,15 +1,9 @@
 = form_for [:profile, @repository] do |f|
-  - if @repository.errors.any?
-    #error_explanation
-      %h2
-        = "#{pluralize(@repository.errors.count, "error")} prohibited this repository from being save:"
-      %ul
-        - @repository.error.full_messages.each do |message|
-          %li
-            = message
-    
   .form-group
     = f.label 'Link'
     = f.text_field :link, class: 'form-control'
+    - if @repository.errors[:link].any?
+      .text-danger 
+        = @repository.errors[:link].to_s[/\w([^"]*)/]
   .actions
     = f.submit 'Guardar', class: 'btn btn-success btn-block text-white'

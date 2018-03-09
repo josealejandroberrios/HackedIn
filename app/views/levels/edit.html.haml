@@ -1,7 +1,8 @@
-.row.justify-content-center
-  #Edit-Level.col-4
-    .card.p-4
-      %h3.text-center.mb-4 Editar Nivel
-      = render 'form', role: @level
-      = link_to 'Volver', levels_path   #### Agregar cuando se tenga el index
+.col
+  .row.justify-content-center
+    #Edit-Level.col-4
+      .card.p-4
+        %h3.text-center.mb-4 Editar Nivel
+        = render 'form', role: @level
+        = link_to 'Regresar', levels_path
 

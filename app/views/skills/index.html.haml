@@ -1,95 +1,116 @@
 - if user_signed_in?
   - if current_user.role.name === 'ADMINISTRADOR'
-    .row.justify-content-center
-      #List-Skills.col-8
-        .card.p-4
-          %h3.text-center Habilidades Cargadas
-          %button.btn.btn-success
-            = link_to 'Nueva Habilidad', new_skill_path, class: 'text-white' ### colocar font awesome
-          - if @skills.empty?
-            %h4 No Existen Habilidades Cargadas
-          - else
-            %table.table
-              %thead
-                %tr
-                  %th Nombre
-                  %th Requerimientos
-                  %th Acciones
-              %tbody
-                - @skills.each do |skill|
+    #List-Skills.col
+      .row.justify-content-center
+        .col-8.card.p-5
+          .row
+            .col
+              %h3.text-center Habilidades Cargadas
+            .col-2.text-center
+              = link_to new_skill_path do
+                = fa_icon "plus-circle", class: "fa-2x text-success"
+            - if @skills.empty?
+              %h4 No Existen Habilidades Cargadas
+            - else
+              %table.table.mt-2
+                %thead
                   %tr
-                    %td
-                      = skill.name
-                    %td
-                      - skill.requirements.each_with_index do |requirement, index|
-                        = "#{index + 1}-) #{requirement.name}, "
-                    %td
-                      %button.btn.btn-success
-                        = link_to 'Editar', edit_skill_path(skill), class: 'text-white' ### colocar font awesome
-                      %button.btn.btn-success
-                        = link_to 'Eliminar', skill_path(skill), method: :delete, data: { confirm: "Desea Eliminar esta Habilidad?" }, class: 'text-white' ### colocar font awesome
+                    %th Nombre
+                    %th Requerimientos
+                    %th Acciones
+                %tbody
+                  - @skills.each do |skill|
+                    %tr
+                      %td
+                        = skill.name
+                      %td
+                        - skill.requirements.each_with_index do |requirement, index|
+                          = "#{index + 1}-) #{requirement.name}, "
+                      %td
+                        = link_to edit_skill_path(skill) do
+                          = fa_icon "pencil", class: "fa-lg text-secondary mr-2"
+                        = link_to "" do
+                          = fa_icon "trash", class: "fa-lg text-danger"   #### #### agregar ruta de elimnar
+          .row
+            .col.text-center
+              = link_to 'Regresar', admin_path, class: 'text-center'
   - else
     .col
       .row
-        #List-Skills.col
-          %h3 Habilidades
+        #List-Skills.col-10
+          %h3 
+            %ins Habilidades
+        .col-2.text-center
           - if user_signed_in?
             - if @profile.user_id === current_user.id
-              %button.btn.btn-success
-                = link_to 'Añadir', add_profile_skills_path(@profile), class: 'text-white' ### colocar font awesome
-          - if @profile.skills.empty?
-            .col
-          - else
-            - @profile.skills.each do |skill|
-              .row
-                #Skill.col
-                  .row
-                    .col-2
-                      %h5
+              = link_to profile_path(current_user.profile) do
+                = fa_icon "plus-circle", class: "fa-2x text-success"
+      - if @profile.skills.empty?
+        .col
+      - else
+        .row.ml-5.mt-4.mr-5
+          - @profile.skills.each do |skill|
+            #Skill.col-10
+              .row.pb-2
+                .col-3.pl-0
+                  .bg-secondary.rounded-skill.text-center
+                    %strong
+                      %span.text-white
                         = skill.name
-                    .col-8
-                      .row
-                        - skill.requirements.each do |requirement|
-                          - requirement.fullfillments.each do |fullfillment|
-                            - if fullfillment.status == true
-                              .col.border.border-secondary.bg-info
-                                %h6.text-center.text-white
-                                  = requirement.name
-                            - else
-                              .col.border.border-secondary.bg-danger
-                                %h6.text-center.text-white
-                                  = requirement.name
-              -# - if @profile.user_id === current_user.id
-              -#   .col-2
-              -#     .row
-              -#       .col
-              -#         %button.btn.btn-success
-              -#           = link_to 'Editar', edit_profile_education_path(@profile, education, class: 'text-white'
+              .row 
+                .col
+                  .row.text-center
+                    - skill.requirements.each do |requirement|
+                      - requirement.fullfillments.each do |fullfillment|
+                        - if fullfillment.status == true
+                          .col.border.border-secondary.bg-info
+                            %span.text-white
+                              = requirement.name
+                        - else
+                          .col.border.border-secondary.bg-danger
+                            %span.text-white
+                              = requirement.name
+              %hr/
+            .col-2
+              .row
+                - if user_signed_in?
+                  - if @profile.user_id === current_user.id
+                    .col-6.text-right
+                      = link_to "" do
+                        = fa_icon "pencil", class: "fa-lg text-secondary"   #### agregar ruta de editar
+                    .col-6.text-right
+                      = link_to "" do
+                        = fa_icon "trash", class: "fa-lg text-danger"   #### #### agregar ruta de elimnar
 - else
   .col
     .row
       #List-Skills.col
-        %h3 Habilidades
-        - if @profile.skills.empty?
-          .col
-        - else
-          - @profile.skills.each do |skill|
-            .row
-              #Skill.col
-                .row
-                  .col-2
-                    %h5
+        %h3 
+          %ins Habilidades      
+    - if @profile.skills.empty?
+      .col
+    - else
+      .row.ml-5.mt-4.mr-5
+        - @profile.skills.each do |skill|
+          #Skill.col-10
+            .row.pb-2
+              .col-3.pl-0
+                .bg-secondary.rounded-skill.text-center
+                  %strong
+                    %span.text-white
                       = skill.name
-                  .col-8
-                    .row
-                      - skill.requirements.each do |requirement|
-                        - requirement.fullfillments.each do |fullfillment|
-                          - if fullfillment.status == true
-                            .col.border.border-secondary.bg-info
-                              %h6.text-center.text-white
-                                = requirement.name
-                          - else
-                            .col.border.border-secondary.bg-danger
-                              %h6.text-center.text-white
-                                = requirement.name
-                          
+            .row 
+              .col
+                .row.text-center
+                  - skill.requirements.each do |requirement|
+                    - requirement.fullfillments.each do |fullfillment|
+                      - if fullfillment.status == true
+                        .col.border.border-secondary.bg-info
+                          %span.text-white
+                            = requirement.name
+                      - else
+                        .col.border.border-secondary.bg-danger
+                          %span.text-white
+                            = requirement.name
+            %hr/
+                      

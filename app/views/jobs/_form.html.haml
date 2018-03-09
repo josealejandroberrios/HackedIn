@@ -1,27 +1,33 @@
-= form_for [:profile, @job] do |f|
-  - if @job.errors.any?
-    #error_explanation
-      %h2
-        = "#{pluralize(@job.errors.count, "error")} prohibited this job from being save:"
-      %ul
-        - @job.error.full_messages.each do |message|
-          %li
-            = message
-    
+= form_for [:profile, @job] do |f|  
   .form-group
     = f.label 'Compañia'
     = f.text_field :company, class: 'form-control'
+    - if @job.errors[:company].any?
+      .text-danger 
+        = @job.errors[:company].to_s[/\w([^"]*)/]
   .form-group
     = f.label 'Cargo'
     = f.text_field :position, class: 'form-control'
+    - if @job.errors[:position].any?
+      .text-danger 
+        = @job.errors[:position].to_s[/\w([^"]*)/]
   .form-group
     = f.label 'Descripción'
     = f.text_area :description, class: 'form-control'
+    - if @job.errors[:description].any?
+      .text-danger 
+        = @job.errors[:description].to_s[/\w([^"]*)/]
   .form-group
     = f.label 'Desde el Año'
     = f.date_field :start_date, class: 'form-control'
+    - if @job.errors[:start_date].any?
+      .text-danger 
+        = @job.errors[:start_date].to_s[/\w([^"]*)/]
   .form-group
     = f.label 'Hasta el Año'
     = f.date_field :finish_date, class: 'form-control'
+    - if @job.errors[:finish_date].any?
+      .text-danger 
+        = @job.errors[:finish_date].to_s[/\w([^"]*)/]
   .actions
     = f.submit 'Guardar', class: 'btn btn-success btn-block text-white'

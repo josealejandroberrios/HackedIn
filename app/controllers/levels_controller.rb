@@ -8,8 +8,7 @@ class LevelsController < ApplicationController
   end
   
   def show
-    @level_find = Level.first.id
-    @profile
+    
   end
 
   def new
@@ -21,7 +20,7 @@ class LevelsController < ApplicationController
 
     respond_to do |format|
       if @level.save
-        format.html { redirect_to  levels_path } ### Modificar el path
+        format.html { redirect_to  levels_path }
         format.json { render :show, status: :created, location: @level }
       else
         format.html { render :new }
@@ -37,7 +36,7 @@ class LevelsController < ApplicationController
   def update
     respond_to do |format|
       if @level.update(level_params)
-        format.html { redirect_to levels_path } ### Modificar el path
+        format.html { redirect_to levels_path }
         format.json { render :show, status: :ok, location: @level }
       else
         format.html { render :edit }

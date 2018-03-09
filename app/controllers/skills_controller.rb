@@ -41,9 +41,10 @@ class SkillsController < ApplicationController
      end
    end
 
+   ##### TODAVIA FALTA
    def add
     # # @profile = Profile.find(id: params[:profile_id])
-    # @skills = Skill.all
+    @skills = Skill.all
     # @skills.requirements
 
     # @requirement = 

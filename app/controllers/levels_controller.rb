@@ -4,7 +4,12 @@ class LevelsController < ApplicationController
 
 
   def index
-   @levels = Level.all 
+   @levels = Level.all
+  end
+  
+  def show
+    @level_find = Level.first.id
+    @profile
   end
 
   def new

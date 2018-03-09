@@ -1,30 +1,32 @@
-.row.justify-content-center
-  #List-Levels.col-8
-    .card.p-4
-      %h3.text-center Niveles Cargados
-      %button.btn.btn-success
-        = link_to 'Nuevo Nivel', new_level_path, class: 'text-white'
-      - if @levels.empty?
-        %h4 No Existen Niveles Cargados
-      - else
-        %table.table
-          %thead
-            %tr
-              %th Nombre
-              %th Descripión Positiva
-              %th Descripión Negativa
-              %th Acciones
-          %tbody
-            - @levels.each do |level|
-              %tr
-                %td
-                  = level.name
-                %td
-                  = level.positive_description
-                %td
-                  = level.negative_description
-                %td
-                  %button.btn.btn-success
-                    = link_to 'Editar', edit_level_path(level), class: 'text-white'
-                  %button.btn.btn-success
-                    = link_to 'Eliminar', level_path(level), method: :delete, data: { confirm: "Desea Eliminar este Rol?" }, class: 'text-white'
+- if user_signed_in?
+  - if current_user.role.name === 'ADMINISTRADOR'
+    .row.justify-content-center
+      #List-Levels.col-8
+        .card.p-4
+          %h3.text-center Niveles Cargados
+          %button.btn.btn-success
+            = link_to 'Nuevo Nivel', new_level_path, class: 'text-white'  #### Modificar y poner fontawesome
+          - if @levels.empty?
+            %h4 No Existen Niveles Cargados
+          - else
+            %table.table
+              %thead
+                %tr
+                  %th Nombre
+                  %th Descripión Positiva
+                  %th Descripión Negativa
+                  %th Acciones
+              %tbody
+                - @levels.each do |level|
+                  %tr
+                    %td
+                      = level.name
+                    %td
+                      = level.positive_description
+                    %td
+                      = level.negative_description
+                    %td
+                      %button.btn.btn-success
+                        = link_to 'Editar', edit_level_path(level), class: 'text-white' #### Modificar y poner fontawesome
+                      %button.btn.btn-success
+                        = link_to 'Eliminar', level_path(level), method: :delete, data: { confirm: "Desea Eliminar este Rol?" }, class: 'text-white' #### Modificar y poner fontawesome

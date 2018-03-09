@@ -16,9 +16,6 @@
             = f.email_field :email, autocomplete: "email", class: 'form-control'
           .form-group
             = f.label 'Contraseña (6 Caracteres Minimo)'
-            - if @minimum_password_length
-              %em
-                (#{@minimum_password_length} Caracteres minimo)
             = f.password_field :password, autocomplete: "off", class: 'form-control'
           .form-group
             = f.label 'Confirmacion de Contraseña'

@@ -1,7 +1,8 @@
 .col
   .row
     #List-Educations.col-10
-      %h3 Formación
+      %h3 
+        %ins Formación
     .col-2.text-center
       - if user_signed_in?
         - if @profile.user_id === current_user.id
@@ -16,7 +17,8 @@
           .row
             .col
               %h5
-                = education.place
+                %strong
+                  = education.place
           .row
             .col
               %h6
@@ -27,8 +29,9 @@
                 = education.discipline
           .row
             .col
-              %h6
-                = "#{education.start_date} al #{education.finish_date}"
+              %p
+                %small
+                  = "#{education.start_date} al #{education.finish_date}"
               %hr/
         .col-2
           .row

@@ -1,21 +1,18 @@
 = form_for(@profile) do |f|
-  - if @profile.errors.any?
-    #error_explanation
-      %h2
-        = "#{pluralize(@profile.errors.count, "error")} prohibited this profile from being save:"
-      %ul
-        - @profile.errors.full_messages.each do |message|
-          %li
-            = message
   .form-group
-    -#= f.label 'Avatar'
     = f.file_field :avatar, class: 'form-control'
   .form-group
     = f.label 'Pais'
     = f.text_field :country, class: 'form-control'
+    - if @profile.errors[:country].any?
+      .text-danger 
+        = @profile.errors[:country].to_s[/\w([^"]*)/]
   .form-group
     = f.label 'Descripcion'
     = f.text_area :about, class: 'form-control'
+    - if @profile.errors[:about].any?
+      .text-danger 
+        = @profile.errors[:about].to_s[/\w([^"]*)/]
   .form-group
     = f.label 'Selecione el Nivel'
     .row
@@ -33,19 +30,5 @@
           .row
             .col
               = f.label "#{level.negative_description}"
-      
-    -# .col
-    -#   .row
-    -#     .col
-    -#     = f.label 'Seleccione el Nivel'
-    -#     - @levels.each do |level|
-    -#     .row
-    -#       .col
-    -#         
-    -#           = f.label "#{level.name}"
-    -#         -# = f.label "#{level.positive_description}"
-    -#         -# = f.label "#{level.negative_description}"
-            
-  
   .actions
-    = f.submit "Guardar", class: 'btn btn-success btn-block'  
+    = f.submit "Guardar", class: 'btn btn-success btn-block'

@@ -1,19 +1,20 @@
 -##### todavia le falta
-.row.justify-content-center
-  #Add-Level.col-8
-    .card.p-4
-      %h3.text-center.mb-4 Agregar Nivel
-      = form_tag url: levels_added_profile_path, method: :post do
-        .row
-          - @levels.each do |level|
-            .col-6.border.border-primary
-              .row
-                .col-2
-                  = check_box_tag "level_ids[]", level.id
-                .col-8
-                  %p= level.name
-                  %strong Desripcion Positiva
-                  %p= level.positive_description
-                  %strong Desripcion Negativa
-                  %p= level.negative_description    
-      = submit_tag 'Guardar', class: 'btn btn-success btn-block text-white'
+.col
+  .row.justify-content-center
+    #Add-Level.col-8
+      .card.p-4
+        %h3.text-center.mb-4 Agregar Nivel
+        = form_tag url: levels_added_profile_path, method: :post do
+          .row
+            - @levels.each do |level|
+              .col-6.border.border-primary
+                .row
+                  .col-2
+                    = check_box_tag "level_ids[]", level.id
+                  .col-8
+                    %p= level.name
+                    %strong Desripcion Positiva
+                    %p= level.positive_description
+                    %strong Desripcion Negativa
+                    %p= level.negative_description    
+        = submit_tag 'Guardar', class: 'btn btn-success btn-block text-white'

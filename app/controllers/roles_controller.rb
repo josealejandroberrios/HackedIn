@@ -16,7 +16,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.save
-        format.html { redirect_to  roles_path } ### Modificar el path
+        format.html { redirect_to  roles_path }
         format.json { render :show, status: :created, location: @role }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class RolesController < ApplicationController
   def update
     respond_to do |format|
       if @role.update(role_params)
-        format.html { redirect_to roles_path } ### Modificar el path
+        format.html { redirect_to roles_path }
         format.json { render :show, status: :ok, location: @role }
       else
         format.html { render :edit }

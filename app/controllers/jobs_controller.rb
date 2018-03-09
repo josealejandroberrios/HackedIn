@@ -16,7 +16,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to  profile_path(@profile) } ### Modificar el path
+        format.html { redirect_to  profile_path(@profile) }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class JobsController < ApplicationController
   def update
     respond_to do |format|
       if @job.update(job_params)
-        format.html { redirect_to profile_path(@job.profile) } ### Modificar el path
+        format.html { redirect_to profile_path(@job.profile) }
         format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }

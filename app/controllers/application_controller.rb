@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if current_user.profile == nil
       if current_user.role.name === "ADMINISTRADOR"
-        skills_path(@skills)    #### Cuando haya panel cambiarlo
+        admin_path
       else
         new_profile_path(@profile)
       end

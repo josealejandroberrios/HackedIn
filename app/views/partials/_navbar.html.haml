@@ -48,16 +48,20 @@
 
       -# ----- Buscador -----        
       
-      .col-6.text-center
-        = form_tag  class: 'form-inline' do
-          = text_field_tag  class: 'flex-2 form-control mr-2', placeholder: 'Busqueda de empleados'
-          = button_tag(type: "submit", class: "btn btn-primary btn-sm") do
-            %p.m-0 Buscar 
+      .col-6.text-left
+        = form_tag class: 'form-inline' do
+          .row.px-0
+            .col-5
+              = text_field_tag :keywords, params[:keywords], class: 'flex-2 form-control mr-2', placeholder: 'Busqueda de Perfiles'
+            .col-3
+              = button_tag(type: "submit", class: "btn btn-primary") do
+                = fa_icon "search", class: "fa-lg"
+            .col-4
             -#^aqui arriba sustitelle '%p' por un icono^
       .col-4
         .row
           -if current_user.role.name === 'ADMINISTRADOR' 
-            .col-6
+            .col-8
               %div
                 %button.btn.btn-primary.position-absolute.rounded-circle
                   = link_to profile_path(current_user) do

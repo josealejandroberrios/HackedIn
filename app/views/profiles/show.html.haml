@@ -1,21 +1,30 @@
 #Profile.col
   .row.justify-content-center
     #Profile-Data.card.p-5.col-8.profile-border-shadow
-      #Personal-Information.row.border.border-light.p-3.rounded.profile-border-shadow
-        #Avatar.col-3.text-center 
-          = image_tag @profile.avatar.url(:medium), class: "image-profile rounded-circle" 
-        #Personal-Data.col-7
-          %h3#FullName 
-            = "#{@profile.user.name.titleize} #{@profile.user.lastname.titleize}"
-          %h3#Email
-            = "#{@profile.user.email}"
-          %h3#Country
-            = @profile.country
-          #Repositories.row.mt-5
-            = render template: 'repositories/index'
-        #Edit-Button.col-2.text-center
-          = link_to edit_profile_path(@profile) do
-            = fa_icon "pencil", class: "fa-2x text-secondary"
+      #Personal-Information.row.border.border-light.rounded.profile-border-shadow
+        .col-12
+          #Profile-image.row
+            = image_tag 'fondo-profile-picture.jpg', class: "profile-background rounded" 
+            #Avatar.col-12.text-center.negative-margin
+              - if @profile.avatar_file_name == nil
+                = image_tag 'avatar-default.png', class: "image-profile rounded-circle profile-border-shadow"
+              - else
+                = image_tag @profile.avatar.url(:medium), class: "image-profile rounded-circle profile-border-shadow" 
+        .col-12
+          .row.p-3
+            #Personal-Data.col-10.mt-5
+              %h3#FullName 
+                = "#{@profile.user.name.titleize} #{@profile.user.lastname.titleize}"
+              %h3#Email
+                = "#{@profile.user.email}"
+              %h3#Country
+                = @profile.country
+              #Repositories.row.mt-3
+                = render template: 'repositories/index'
+            #Edit-Button.col-2.text-center.mt-5
+              = link_to edit_profile_path(@profile) do
+                = fa_icon "pencil", class: "fa-2x text-secondary"
+            
       #Description.row.border.border-light.p-3.mt-3.rounded.profile-border-shadow
         .col-10
           %h2 Descripión

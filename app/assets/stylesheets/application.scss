@@ -21,10 +21,23 @@
 }
 
 .image-profile{
-  width: 150px;
-  height: 150px;
+  max-width: 160px;
+  max-height: 160px;
+  min-width: 160px;
+  min-height: 160px;
+  // width: 250px;
+  // height: 250px;
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
   width: 150px;
+}
+
+.profile-background{
+  width: 100%;
+  height: 200px;
+}
+
+.negative-margin{
+  margin-top: -80px;
 }

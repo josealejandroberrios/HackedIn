@@ -3,7 +3,7 @@
     .col-4
       .card.p-4
         %h3.text-center.mb-4 Registro de Usuarios
-        = form_for(:user, as: :user, url: user_registration_path(@user)) do |f|
+        = form_for(:user, as: :user, url: user_registration_path) do |f|
           -# = user_error_messages!
           .form-group
             = f.label 'Nombre'

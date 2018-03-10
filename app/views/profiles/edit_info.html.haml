@@ -1,0 +1,38 @@
+.col-12
+  .row.justify-content-center
+    .col-4
+      .card.p-4
+        %h3.text-center.mb-4 Editar Informacion personal
+        = form_for(@profile, url: { action: :update}) do |f|
+          .row
+            #Avatar.col-12.text-center
+              - if @profile.avatar_file_name == nil
+                = image_tag 'avatar-default.png', class: "image-profile rounded-circle profile-border-shadow"
+              - else
+                = image_tag @profile.avatar.url(:medium), class: "image-profile rounded-circle profile-border-shadow"
+            #Avatar-Load.col-12.mt-2
+              = f.label 'Avatar', class: 'text-center col h4'
+              = f.file_field :avatar, class: 'small ml-5'
+            #Name.col-12.pt-2
+              = f.fields_for(:user) do |u|
+                .form-group
+                  = u.label 'Nombres'
+                  = u.text_field :name, class: 'form-control'
+                  - if current_user.errors[:name].any?
+                    .text-danger 
+                      = current_user.errors[:name].to_s[/\w([^"]*)/]
+                .form-group
+                  = u.label 'Apellidos'
+                  = u.text_field :lastname, class: 'form-control'
+                  - if current_user.errors[:lastname].any?
+                    .text-danger 
+                      = current_user.errors[:lastname].to_s[/\w([^"]*)/]
+          .form-group
+            = f.label 'Pais'
+            = f.text_field :country, class: 'form-control'
+            - if @profile.errors[:country].any?
+              .text-danger 
+                = @profile.errors[:country].to_s[/\w([^"]*)/]
+          .actions
+            = f.submit "Guardar", class: 'btn btn-success'
+        = link_to 'Cancelar', profile_path(@profile)

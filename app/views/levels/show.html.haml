@@ -6,7 +6,7 @@
     .col-2.text-center
       - if user_signed_in?
         - if @profile.user_id === current_user.id
-          = link_to edit_profile_path(@profile) do
+          = link_to edit_level_profile_path(@profile) do
             = fa_icon "pencil", class: "fa-2x text-secondary"
       -### pinta el nivel seleccionado mas los anteriores
   .row

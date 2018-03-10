@@ -18,8 +18,8 @@
             -#^aqui arriba sustitelle '%p' por un icono^
       .col-4
         .row
-          -if current_user.role.name === 'ADMINISTRADOR' 
-            .col-6
+          .col-8
+            -if current_user.role.name === 'ADMINISTRADOR' 
               %div
                 %button.btn.btn-primary.position-absolute.rounded-circle
                   = link_to admin_path do
@@ -29,8 +29,7 @@
                   = link_to admin_path, class: "m-1"  do
                     %span.badge.text-dark
                       = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
-          - elsif current_user.role.name === 'USUARIO' && current_user.profile != nil && current_user.profile.persisted?
-            .col-8
+            - elsif current_user.role.name === 'USUARIO' && current_user.profile != nil && current_user.profile.persisted?
               %div
                 %button.btn.btn-primary.position-absolute.rounded-circle
                   = link_to profile_path(current_user.profile) do
@@ -40,9 +39,8 @@
                   = link_to profile_path(current_user.profile), class: "m-1"  do                           
                     %span.badge.text-dark
                       = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
-          - else
           .col-4
             %button.btn.btn-danger.btn-sm.btn-block
               = link_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class: 'text-white'
 - else
-  = render template: 'devise/sessions/new'
+  = render template: 'devise/sessions/login_form'

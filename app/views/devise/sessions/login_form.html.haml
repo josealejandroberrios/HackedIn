@@ -4,7 +4,7 @@
       = image_tag 'logo.png', class: 'user-nbar-logo'
     .col-sm-5
     .col-sm-5
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = form_for(:user, as: :user, url: new_user_session_path) do |f|
         .row
           .col-sm-4
             .field
@@ -17,4 +17,3 @@
           .col-sm-4
             .actions
               = f.submit "Log in", class: 'btn btn-success btn-block'
-        -# = render "devise/shared/links"

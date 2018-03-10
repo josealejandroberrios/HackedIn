@@ -1,0 +1,14 @@
+.col-12
+  .row.justify-content-center
+    .col-4
+      .card.p-4
+        %h3.text-center.mb-4 Editar Descripción
+        = form_for(@profile, url: { action: :update}) do |f|
+          .form-group
+            = f.text_area :about, class: 'form-control', cols: "60", rows: "10"
+            - if @profile.errors[:about].any?
+              .text-danger 
+                = @profile.errors[:about].to_s[/\w([^"]*)/]
+          .actions
+            = f.submit "Guardar", class: 'btn btn-success'
+        = link_to 'Cancelar', profile_path(@profile)

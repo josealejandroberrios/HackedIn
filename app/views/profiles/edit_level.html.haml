@@ -1,0 +1,25 @@
+.col-12
+  .row.justify-content-center
+    .col-6
+      .card.p-4
+        %h3.text-center.mb-4 Editar Nivel
+        = form_for(@profile, url: { action: :update}) do |f|
+          .form-group
+            .row
+              - @levels.each do |level|
+                .col
+                  .row
+                    .col
+                      = f.radio_button :level_id, level.id
+                  .row
+                    .col
+                      = f.label "#{level.name.upcase}"
+                  .row
+                    .col
+                      = f.label "#{level.positive_description}"
+                  .row
+                    .col
+                      = f.label "#{level.negative_description}"
+          .actions
+            = f.submit "Guardar", class: 'btn btn-success'
+        = link_to 'Cancelar', profile_path(@profile)

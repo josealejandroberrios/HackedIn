@@ -1,6 +1,6 @@
 #Profile.col
   .row.justify-content-center
-    #Profile-Data.card.p-5.col-8.profile-border-shadow.mb-5
+    #Profile-Data.card.p-5.col-8.profile-border-shadow.mb-4
       #Personal-Information.row.border.border-light.rounded.profile-border-shadow
         .col-12
           #Profile-image.row
@@ -39,8 +39,7 @@
                     = fa_icon "pencil", class: "fa-2x text-secondary" #### verificar esto
           .row
             .col.ml-5.mt-4.mr-5
-              .blockquote-footer
-                = @profile.about
+              = sanitize(@profile.about).html_safe
       #Levels.row.border.border-light.mt-3.p-3.rounded.profile-border-shadow
         = render template: 'levels/show'
       #Jobs.row.border.border-light.mt-3.p-3.rounded.profile-border-shadow

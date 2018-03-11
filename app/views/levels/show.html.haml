@@ -14,23 +14,18 @@
       .row
         - @levels.each do |level|
           - if level.id < @profile.level_id
-            .col-3
+            .col-5.card.mb-3.ml-2
               %p.text-center
                 = level.name
-              %hr/
+              %hr.line-border-shadow.mt-0/
               %strong.badge Descripcion Positiva:
-              %p
-                = level.positive_description
-              %hr/
-        .col-3
+              = sanitize(level.positive_description).html_safe
+        .col-5.card.mb-3.ml-2
           %p.text-center
             = @profile.level.name
-          %hr/
+          %hr.line-border-shadow.mt-0/
           %strong.badge Descripcion Positiva: 
-          %p
-            = @profile.level.positive_description
-          %hr/
+          = sanitize(@profile.level.positive_description).html_safe
+          %hr.line-border-shadow/
           %strong.badge Descripcion Negativa:
-          %p
-            = @profile.level.negative_description
-          %hr/
+          = sanitize(@profile.level.negative_description).html_safe

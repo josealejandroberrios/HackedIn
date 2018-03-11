@@ -1,6 +1,7 @@
  @import "bootstrap";
  @import "singin_devise";
  @import "font-awesome";
+ @import "trix";
 
 .container-fluid{
   min-height: 100vh;
@@ -25,6 +26,12 @@
   -webkit-box-shadow: 0px 0px 3px 0px rgba(50,50,50,1);
   -moz-box-shadow: 0px 0px 3px 0px rgba(50,50,50,1);
   box-shadow: 0px 0px 3px 0px rgba(50,50,50,1);
+}
+
+.line-border-shadow{
+  -webkit-box-shadow:0px 1px 1px rgb(182, 181, 181);
+  -moz-box-shadow:0px 1px 1px rgb(182, 181, 181);
+  box-shadow:0px 1px 1px rgb(182, 181, 181);
 }
 
 .image-profile{

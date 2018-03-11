@@ -7,13 +7,13 @@
         = @level.errors[:name].to_s[/\w([^"]*)/]
   .form-group
     = f.label 'Descripción Positiva'
-    = f.text_area :positive_description, class: 'form-control'
+    = f.trix_editor :positive_description, class: 'form-control'
     - if @level.errors[:positive_description].any?
       .text-danger 
         = @level.errors[:positive_description].to_s[/\w([^"]*)/]
   .form-group
     = f.label 'Descripción Negativa'
-    = f.text_area :negative_description, class: 'form-control'
+    = f.trix_editor :negative_description, class: 'form-control'
     - if @level.errors[:negative_description].any?
       .text-danger 
         = @level.errors[:negative_description].to_s[/\w([^"]*)/]

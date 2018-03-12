@@ -1,0 +1,29 @@
+.col-12
+    .row.justify-content-center
+        .col-8
+            
+            %h2
+                Resultado
+            
+            - if @profiles.empty?
+                .row.justify-content-center.my-3
+                    .col-12
+                        = fa_icon "times", class: "fa-5x"
+                
+                    .col-12
+                        %h6.text-center No pudimos conseguir ningún perfil.
+                        
+            - else
+                .card 
+                    %table.table
+                    
+                        %tbody
+                            - @profiles.each do |profile|
+                                
+                                    
+                                %tr
+                                    %td= profile.user.name
+                                    %td= profile.user.lastname
+                                    
+                                    
+            

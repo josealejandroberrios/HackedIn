@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'admin' => 'admin#index'
 
+  get 'search' => 'profiles#index', as: 'profiles_index'
+
   root 'home#index'
 
   devise_for :users
@@ -14,7 +16,7 @@ Rails.application.routes.draw do
   #   resources :requirements, only: [:index, :new, :create, :edit, :update]
   # end   ### Verificar si se va usar
   
-  resources :profiles, only: [:show, :new, :create, :edit, :update]  do  
+  resources :profiles do #, only: [:show, :new, :create, :edit, :update]  do  
     resources :repositories, only: [:new, :create, :edit, :update]
     resources :jobs, only: [:new, :create, :edit, :update]
     resources :educations, only: [:new, :create, :edit, :update]

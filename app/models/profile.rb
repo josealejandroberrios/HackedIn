@@ -13,4 +13,17 @@ class Profile < ApplicationRecord
 
   #### Validaciones
   validates :country, :about, presence: {message: '*No puede dejarse vacio'}
+
+  def self.search(search)
+    wildcard_search = "%#{search}%"
+    if search
+      Profile.find("wildcard_search")
+    else
+      all
+    end    
+  end
+
+
 end
+
+

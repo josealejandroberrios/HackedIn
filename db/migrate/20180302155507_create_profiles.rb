@@ -5,6 +5,7 @@ class CreateProfiles < ActiveRecord::Migration[5.1]
       t.text :about, null: false
       t.string :country, null: false
       t.references :user, foreign_key: true
+      
       t.references :level, foreign_key: true
 
       t.timestamps

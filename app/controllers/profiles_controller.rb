@@ -10,6 +10,13 @@ class ProfilesController < ApplicationController
     @profile = Profile.new
     @levels = Level.all
   end
+  
+  def index             #↓↓va pa al modelo 
+    @profiles = Profile.all
+    if params[:profile]
+      @user = Profile.search(params[:profile])
+    end
+  end
 
   def create
     @levels = Level.all

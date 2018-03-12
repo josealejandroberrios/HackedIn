@@ -7,10 +7,10 @@
       -# ----- Buscador -----        
       
       .col-6.text-left
-        = form_tag class: 'form-inline' do
+        = form_tag profiles_index_path, class: 'form-inline', method: :get do
           .row.px-0
             .col-5
-              = text_field_tag :keywords, params[:keywords], class: 'flex-2 form-control mr-2', placeholder: 'Busqueda de Perfiles'
+              = text_field_tag :profile, params[:profile], class: 'flex-2 form-control mr-2', placeholder: 'Busqueda de Perfiles'
             .col-3
               = button_tag(type: "submit", class: "btn btn-primary") do
                 = fa_icon "search", class: "fa-lg"

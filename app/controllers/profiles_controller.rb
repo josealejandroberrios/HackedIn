@@ -12,12 +12,12 @@ class ProfilesController < ApplicationController
   end
   
   def index             #↓↓va pa al modelo 
- puts "uno"
+ 
     #@profiles = Profile.search(params[:profile])
     @profiles = Profile.all
-puts "dos"
+
     if params[:profile]
-puts "tres"
+
        @users = Profile.search(params[:profile])
        @profiles = @users.map {|user| user.profile}
     end

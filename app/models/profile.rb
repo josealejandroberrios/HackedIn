@@ -16,10 +16,10 @@ class Profile < ApplicationRecord
 
   def self.search(search)
     wildcard_search = "%#{search}%"
-    if search
-      Profile.find("wildcard_search")
+    if search 
+      User.where("name LIKE ?", wildcard_search)
     else
-      all
+      User.all
     end    
   end
 

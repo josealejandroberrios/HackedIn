@@ -17,8 +17,10 @@ class Profile < ApplicationRecord
   def self.search(search)
     wildcard_search = "%#{search}%"
     if search 
-      User.where("name LIKE ?", wildcard_search)
-    else
+      puts '3'
+      User.where("name LIKE ? OR lastname LIKE ? OR email LIKE ?", wildcard_search, wildcard_search, wildcard_search)
+    else 
+      puts '4'
       User.all
     end    
   end

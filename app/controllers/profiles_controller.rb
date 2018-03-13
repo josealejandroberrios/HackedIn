@@ -11,15 +11,16 @@ class ProfilesController < ApplicationController
     @levels = Level.all
   end
   
-  def index             #↓↓va pa al modelo 
- 
-    #@profiles = Profile.search(params[:profile])
+  def index                 
     @profiles = Profile.all
-
-    if params[:profile]
-
-       @users = Profile.search(params[:profile])
-       @profiles = @users.map {|user| user.profile}
+puts '1'
+    if params[:profile] #!= nil
+puts '2'
+      @users = Profile.search(params[:profile])
+      @profiles = @users.map {|user| user.profile}
+     #else
+      #@user = Profile.search(params[:profile])
+      #@profiles = Profile.search(params[:profile])
     end
   end
 

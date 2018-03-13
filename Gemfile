@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem "haml-rails", "~> 1.0"
 gem "font-awesome-rails"
 gem 'trix'
+gem 'active_model_serializers', '~> 0.10.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'

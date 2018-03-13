@@ -2,7 +2,7 @@
   - if current_user.role.name === 'ADMINISTRADOR'
     #List-Levels.col
       .row.justify-content-center
-        .col-8.card.p-5
+        .col-8.card.p-5.profile-border-shadow.mb-4
           .row
             .col
               %h3.text-center Niveles Cargados
@@ -12,7 +12,7 @@
             - if @levels.empty?
               %h4 No Existen Niveles Cargados
             - else
-              %table.table.mt-2
+              %table.table
                 %thead
                   %tr
                     %th Nombre
@@ -25,9 +25,9 @@
                       %td
                         = level.name
                       %td
-                        = level.positive_description
+                        = sanitize(level.positive_description).html_safe
                       %td
-                        = level.negative_description
+                        = sanitize(level.negative_description).html_safe
                       %td
                         = link_to edit_level_path(level) do
                           = fa_icon "pencil", class: "fa-lg text-secondary mr-2"

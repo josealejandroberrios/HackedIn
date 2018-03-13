@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :new]
-  before_action :set_profile, only: [:show, :edit, :update]
+  before_action :set_profile, only: [:show, :edit_info, :edit_description, :edit_level, :update]
 
   def show
     @levels = Level.all
@@ -40,9 +40,18 @@ puts '2'
     end
   end
 
-  def edit
+  def edit_info
+  
+  end
+
+  def edit_description
 
   end
+
+  def edit_level
+    @levels = Level.all
+  end
+  
 
   def update
     respond_to do |format|
@@ -50,22 +59,19 @@ puts '2'
         format.html { redirect_to profile_path(@profile) }
         format.json { render :show, status: :ok, location: @profile }
       else
-        format.html { render :edit }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+        if current_user.errors[:name].any? || current_user.errors[:lastname].any? || @profile.errors[:country].any?
+          format.html { render :edit_info }
+          format.json { render json: @profile.errors, status: :unprocessable_entity }
+        elsif @profile.errors[:about].any?
+          format.html { render :edit_description }
+          format.json { render json: @profile.errors, status: :unprocessable_entity }
+        else
+          format.html { render :edit_level }
+          format.json { render json: @profile.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
-
-  #### TODAVIA FALTA 
-  def level_add
-    @levels = Level.all
-  end
-
-  private
-    
-    def set_profile
-      @profile = Profile.find(params[:id])
-    end
 
   private
     
@@ -74,6 +80,6 @@ puts '2'
     end
 
     def profile_params
-      params.require(:profile).permit(:user_id, :avatar, :about, :country, :level_id)
+      params.require(:profile).permit(:user_id, :avatar, :about, :country, :level_id, user_attributes: [:id, :name, :lastname])
     end
 end

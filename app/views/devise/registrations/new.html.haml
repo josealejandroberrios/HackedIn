@@ -1,10 +1,10 @@
 .col-12
   .row.justify-content-center
     .col-4
-      .card.p-4
+      .card.p-4.profile-border-shadow.mb-4
         %h3.text-center.mb-4 Registro de Usuarios
-        = form_for(:user, as: :user, url: user_registration_path(@user)) do |f|
-          -# = user_error_messages!
+        = form_for(:user, as: :user, url: user_registration_path) do |f|
+          -# = devise_error_messages!
           .form-group
             = f.label 'Nombre'
             = f.text_field :name, autofocus: true, class: 'form-control'
@@ -21,4 +21,4 @@
             = f.label 'Confirmacion de Contraseña'
             = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
           .actions
-            = f.submit "Ingresar", class: 'btn btn-success btn-block'
+            = f.submit "Registrarse", class: 'btn btn-success btn-block'

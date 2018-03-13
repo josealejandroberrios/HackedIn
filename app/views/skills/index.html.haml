@@ -2,7 +2,7 @@
   - if current_user.role.name === 'ADMINISTRADOR'
     #List-Skills.col
       .row.justify-content-center
-        .col-8.card.p-5
+        .col-8.card.p-5.profile-border-shadow.mb-4
           .row
             .col
               %h3.text-center Habilidades Cargadas
@@ -70,7 +70,7 @@
                           .col.border.border-secondary.bg-danger
                             %span.text-white
                               = requirement.name
-              %hr/
+              %hr.line-border-shadow/
             .col-2
               .row
                 - if user_signed_in?
@@ -112,5 +112,5 @@
                         .col.border.border-secondary.bg-danger
                           %span.text-white
                             = requirement.name
-            %hr/
+            %hr.line-border-shadow/
                       

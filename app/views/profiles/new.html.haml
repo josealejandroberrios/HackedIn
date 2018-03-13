@@ -1,7 +1,7 @@
 .col-12
   .row.justify-content-center
     .col-8
-      .card.p-4
+      .card.p-4.profile-border-shadow.mb-4
         %h2.text-center.mb-4 Bienvenido #{current_user.name.titleize} #{current_user.lastname.titleize}
         %h3.text-center.mb-4 Comenzemos a crear el Perfil!!
         = render 'form'           

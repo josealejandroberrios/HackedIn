@@ -1,7 +1,7 @@
 .col-12
   .row.justify-content-center
     #NeW-Job.col-4
-      .card.p-4
+      .card.p-4.profile-border-shadow.mb-4
         %h3.text-center.mb-4 Nuevo
         = render 'form'
         = link_to 'Cancelar', profile_path(params[:profile_id])

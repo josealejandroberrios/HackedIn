@@ -13,7 +13,7 @@
         = @job.errors[:position].to_s[/\w([^"]*)/]
   .form-group
     = f.label 'Descripción'
-    = f.text_area :description, class: 'form-control'
+    = f.text_area :description, class: 'form-control', cols: 30, rows: 6
     - if @job.errors[:description].any?
       .text-danger 
         = @job.errors[:description].to_s[/\w([^"]*)/]
@@ -30,4 +30,4 @@
       .text-danger 
         = @job.errors[:finish_date].to_s[/\w([^"]*)/]
   .actions
-    = f.submit 'Guardar', class: 'btn btn-success btn-block text-white'
+    = f.submit 'Guardar', class: 'btn btn-success text-white'

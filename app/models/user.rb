@@ -5,5 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :role
-  has_one :profile 
+  has_one :profile
+
+  #### Validaciones
+  validates :name, :lastname, presence: {message: '*No puede dejarse vacio'}
 end

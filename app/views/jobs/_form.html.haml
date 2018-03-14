@@ -1,34 +1,39 @@
 = form_for [:profile, @job] do |f|  
-  .form-group
+  .form-group.was-validated
     = f.label 'Compañia', class: "text-3rd-font bold"
-    = f.text_field :company, class: 'form-control'
-    - if @job.errors[:company].any?
-      .text-danger 
-        = @job.errors[:company].to_s[/\w([^"]*)/]
-  .form-group
+    = f.text_field :company, class: 'form-control', placeholder: 'Introduce la compañia donde laboraste', required: true
+    .invalid-feedback
+      Falta completar este campo
+    .valid-feedback
+      Listo
+  .form-group.was-validated
     = f.label 'Cargo', class: "text-3rd-font bold"
-    = f.text_field :position, class: 'form-control'
-    - if @job.errors[:position].any?
-      .text-danger 
-        = @job.errors[:position].to_s[/\w([^"]*)/]
-  .form-group
+    = f.text_field :position, class: 'form-control', placeholder: 'Introduce el ultimo cargo ocupado', required: true
+    .invalid-feedback
+      Falta completar este campo
+    .valid-feedback
+      Listo
+  .form-group.was-validated
     = f.label 'Descripción', class: "text-3rd-font bold"
-    = f.text_area :description, class: 'form-control', cols: 30, rows: 6
-    - if @job.errors[:description].any?
-      .text-danger 
-        = @job.errors[:description].to_s[/\w([^"]*)/]
-  .form-group
+    = f.text_area :description, class: 'form-control', cols: 30, rows: 6, placeholder: 'Introduce un breve descripción', required: true
+    .invalid-feedback
+      Falta completar este campo
+    .valid-feedback
+      Listo
+  .form-group.was-validated
     = f.label 'Desde el Año', class: "text-3rd-font bold"
-    = f.date_field :start_date, class: 'form-control'
-    - if @job.errors[:start_date].any?
-      .text-danger 
-        = @job.errors[:start_date].to_s[/\w([^"]*)/]
-  .form-group
+    = f.date_field :start_date, class: 'form-control', required: true
+    .invalid-feedback
+      Falta completar este campo
+    .valid-feedback
+      Listo
+  .form-group.was-validated
     = f.label 'Hasta el Año', class: "text-3rd-font bold"
-    = f.date_field :finish_date, class: 'form-control'
-    - if @job.errors[:finish_date].any?
-      .text-danger 
-        = @job.errors[:finish_date].to_s[/\w([^"]*)/]
+    = f.date_field :finish_date, class: 'form-control', required: true
+    .invalid-feedback
+      Falta completar este campo
+    .valid-feedback
+      Listo
   .actions
     .row.mt-4
       .col-3

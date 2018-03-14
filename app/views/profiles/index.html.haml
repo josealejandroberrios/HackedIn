@@ -1,0 +1,32 @@
+.col
+  .row.justify-content-center
+    #Search-Profiles.card.p-5.col-8.profile-border-shadow.mb-4
+      %h2.mb-4 Resultado de la Busqueda
+      -# %hr.line-border-shadow.my-4/
+      - if @profiles.empty? || @profiles.blank?
+        .row.mt-3.justify-content-center
+          .col-12.text-center.mb-4
+            = fa_icon "user-times", class: "fa-7em text-primary"
+          .col-12
+            %h6.text-center No pudimos conseguir ningún perfil que coincida con los criterios de busqueda.
+            .notice.text-center
+              %small 
+                Intente con otro criterio para la busqueda  
+      - else
+        - @users.each do |user|
+          .row
+            .col-12
+              - if user.role.name != 'ADMINISTRADOR'
+                .row.rounded.profile-border-shadow.mb-4.p-4.align-items-center
+                  .col-3.text-center
+                    = link_to profile_path(user.profile) do
+                      - if user.profile.avatar_file_name == nil
+                        = image_tag 'avatar-default.png', class: "image-profile-search rounded-circle profile-border-shadow"
+                      - else
+                        = image_tag user.profile.avatar.url(:medium), class: "image-profile-search rounded-circle profile-border-shadow" 
+                  .col
+                    %p= "#{user.name.titleize} #{user.lastname.titleize}"
+                    %p= user.email
+                    %p= user.profile.country
+                  .col-3
+                    = link_to 'Ver Perfil', profile_path(user.profile), class: 'text-white btn btn-success col'

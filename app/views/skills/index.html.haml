@@ -33,7 +33,7 @@
                           = fa_icon "trash", class: "fa-lg text-danger"   #### #### agregar ruta de elimnar
           .row
             .col.text-center
-              = link_to 'Regresar', admin_path, class: 'text-center'
+              = link_to 'Regresar', admin_path, class: "btn cancel-button buttons-border"
   - else
     .col
       .row
@@ -85,8 +85,7 @@
   .col
     .row
       #List-Skills.col
-        %h3 
-          %ins Habilidades      
+        %p.title-font Habilidades      
     - if @profile.skills.empty?
       .col
     - else

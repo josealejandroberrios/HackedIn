@@ -6,4 +6,8 @@
       .text-danger 
         = @skill.errors[:name].to_s[/\w([^"]*)/]
   .actions
-    = f.submit 'Guardar', class: 'btn btn-success text-white'
+    .row.mt-4
+      .col-3
+        = f.submit 'Guardar', class: 'btn btn-success text-white'
+      .col-3
+        = link_to 'Regresar', skills_path, class: "btn cancel-button buttons-border"

@@ -1,29 +1,16 @@
 .col
   .row.justify-content-center
-    #Add-Skill.col-4
+    #Add-Skill.col-6
       .card.p-4
         %h3.text-center.mb-4 Agregar Habilidad
         = form_for :skill, url: added_profile_skills_path do |f|
-          .field
+          .form-group
             = f.label :skill, 'Seleccione'
             = f.collection_select :skill, Skill.all, :id, :name
 
           - @skills.each do |skill| 
             .field
               = f.collection_check_boxes :skill, Skill.find(skill.id).requirements, :id, :name
-              -# = f.fields_for :requirements, skill.requirements.build do |requirements_fields|
-              -#   = requirements_fields.text_field :name
+             
           .actions
-            = f.submit 'Guardar', class: 'btn btn-success btn-block text-white'
-
-
-          -# = f.hidden_field_tag "skill[requiremet_ids][]", nil
-          -#   - Requirement.all.each do |requirement|
-          -#     = f.check_box_tag "skill[requirement_ids][]", requirement.id, @skill.requirement_ids.iclude?(requirement.id), id: dom_id(requirement)
-          -#     = f.label_tag dom_id(requirement), requirement.name
-
-
-
-      -# .actions
-      -#   = f.submit 'Guardar', class: 'btn btn-success btn-block text-white'
-      -#     = link_to 'Volver', profile_path(params[:profile_id])   #### Agregar cuando se tenga el index
+            = f.submit 'Guardar', class: 'btn btn-success btn-block text-white

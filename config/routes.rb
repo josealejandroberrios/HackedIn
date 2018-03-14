@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'admin' => 'admin#index'
 
+  get 'search' => 'profiles#index', as: 'profiles_index'
+
   root 'home#index'
 
   devise_for :users
@@ -23,13 +25,13 @@ Rails.application.routes.draw do
     resources :educations, only: [:new, :create, :edit, :update]
     
 
-    ### verificar si se van a usar
-    resources :skills, except: [:index, :show, :new, :create, :edit, :update, :destroy] do
-      collection do  
-        get 'add'
-        post 'added'
-      end
-    end    
+    # ### verificar si se van a usar
+    # resources :skills, except: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    #   collection do  
+    #     get 'add'
+    #     post 'added'
+    #   end
+    # end    
   end
 
   namespace :api do

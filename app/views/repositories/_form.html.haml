@@ -1,10 +1,11 @@
 = form_for [:profile, @repository] do |f|
-  .form-group
+  .form-group.was-validated
     = f.label 'Link', class: "text-3rd-font bold"
-    = f.text_field :link, class: 'form-control'
-    - if @repository.errors[:link].any?
-      .text-danger 
-        = @repository.errors[:link].to_s[/\w([^"]*)/]
+    = f.text_field :link, class: 'form-control', required: true, placeholder: 'Introduzca el link de tu repositorio'
+    .invalid-feedback
+      Falta completar este campo
+    .valid-feedback
+      Listo
   .actions
     .row.mt-4
       .col-3

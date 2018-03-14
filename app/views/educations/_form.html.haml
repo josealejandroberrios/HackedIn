@@ -1,34 +1,39 @@
 = form_for [:profile, @education] do |f|  
-  .form-group
+  .form-group.was-validated
     = f.label 'Universidad', class: "text-3rd-font bold"
-    = f.text_field :place, class: 'form-control'
-    - if @education.errors[:place].any?
-      .text-danger 
-        = @education.errors[:place].to_s[/\w([^"]*)/]
-  .form-group
+    = f.text_field :place, class: 'form-control', required: true, placeholder: 'Introduce la universidad donde estudiaste'
+    .invalid-feedback
+      Falta completar este campo
+    .valid-feedback
+      Listo
+  .form-group.was-validated
     = f.label 'Titulo', class: "text-3rd-font bold"
-    = f.text_field :qualification, class: 'form-control'
-    - if @education.errors[:qualification].any?
-      .text-danger 
-        = @education.errors[:qualification].to_s[/\w([^"]*)/]
-  .form-group
+    = f.text_field :qualification, class: 'form-control', required: true, placeholder: 'Introduce el titulo obtenido'
+    .invalid-feedback
+      Falta completar este campo
+    .valid-feedback
+      Listo
+  .form-group.was-validated
     = f.label 'Disciplina', class: "text-3rd-font bold"
-    = f.text_field :discipline, class: 'form-control'
-    - if @education.errors[:discipline].any?
-      .text-danger 
-        = @education.errors[:discipline].to_s[/\w([^"]*)/]
-  .form-group
+    = f.text_field :discipline, class: 'form-control', required: true, placeholder: 'Introduce disciplina o carrera'
+    .invalid-feedback
+      Falta completar este campo
+    .valid-feedback
+      Listo
+  .form-group.was-validated
     = f.label 'Desde el Año', class: "text-3rd-font bold"
-    = f.date_field :start_date, class: 'form-control'
-    - if @education.errors[:start_date].any?
-      .text-danger 
-        = @education.errors[:start_date].to_s[/\w([^"]*)/]
-  .form-group
+    = f.date_field :start_date, class: 'form-control', required: true
+    .invalid-feedback
+      Falta completar este campo
+    .valid-feedback
+      Listo
+  .form-group.was-validated
     = f.label 'Hasta el Año', class: "text-3rd-font bold"
-    = f.date_field :finish_date, class: 'form-control'
-    - if @education.errors[:finish_date].any?
-      .text-danger 
-        = @education.errors[:finish_date].to_s[/\w([^"]*)/]
+    = f.date_field :finish_date, class: 'form-control', required: true
+    .invalid-feedback
+      Falta completar este campo
+    .valid-feedback
+      Listo
   .actions
     .row.mt-4
       .col-3

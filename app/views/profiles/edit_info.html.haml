@@ -7,33 +7,36 @@
           .row
             #Avatar.col-12.text-center
               - if @profile.avatar_file_name == nil
-                = image_tag 'avatar-default.png', class: "image-profile rounded-circle profile-border-shadow"
+                = image_tag 'avatar-default.png', class: "image-profile rounded-circle profile-border-shadow", id:"something_unique"
               - else
-                = image_tag @profile.avatar.url(:medium), class: "image-profile rounded-circle profile-border-shadow"
+                = image_tag @profile.avatar.url(:medium), class: "image-profile rounded-circle profile-border-shadow", id:"something_unique"
             #Avatar-Load.col-12.mt-2
               = f.label 'Avatar', class: 'text-center col text-3rd-font bold'
-              = f.file_field :avatar, class: 'small ml-5'
+              = f.file_field :avatar, class: 'small ml-5', id:"something_else_unique"
               %hr.line-border-shadow.mt-4/
             #Name.col-12
               = f.fields_for(:user) do |u|
-                .form-group
+                .form-group.was-validated
                   = u.label 'Nombres', class: "text-3rd-font bold"
-                  = u.text_field :name, class: 'form-control'
-                  - if current_user.errors[:name].any?
-                    .text-danger 
-                      = current_user.errors[:name].to_s[/\w([^"]*)/]
-                .form-group
+                  = u.text_field :name, class: 'form-control', required: true, placeholder: 'Introduce tu(s) nombre(s)'
+                  .invalid-feedback
+                    Falta completar este campo
+                  .valid-feedback
+                    Listo
+                .form-group.was-validated
                   = u.label 'Apellidos', class: "text-3rd-font bold"
-                  = u.text_field :lastname, class: 'form-control'
-                  - if current_user.errors[:lastname].any?
-                    .text-danger 
-                      = current_user.errors[:lastname].to_s[/\w([^"]*)/]
-          .form-group
+                  = u.text_field :lastname, class: 'form-control', required: true, placeholder: 'Introduce tu(s) apellido(s)'
+                  .invalid-feedback
+                    Falta completar este campo
+                  .valid-feedback
+                    Listo
+          .form-group.was-validated
             = f.label 'Pais', class: "text-3rd-font bold"
-            = f.text_field :country, class: 'form-control'
-            - if @profile.errors[:country].any?
-              .text-danger 
-                = @profile.errors[:country].to_s[/\w([^"]*)/]
+            = f.text_field :country, class: 'form-control', required: true, placeholder: 'Introduce un pais'
+            .invalid-feedback
+              Falta completar este campo
+            .valid-feedback
+              Listo
           .actions
             .row.mt-4
               .col-3

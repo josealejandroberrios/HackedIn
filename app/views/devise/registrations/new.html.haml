@@ -7,13 +7,13 @@
           -# = devise_error_messages!
           .form-group
             = f.label 'Nombre'
-            = f.text_field :name, autofocus: true, class: 'form-control'
+            = f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'Introduce tu(s) nombre(s)'
           .form-group
             = f.label 'Apellido'
-            = f.text_field :lastname, class: 'form-control'
+            = f.text_field :lastname, class: 'form-control', placeholder: 'Introduce tu(s) apellidos(s)'
           .form-group
             = f.label 'Email'
-            = f.email_field :email, autocomplete: "email", class: 'form-control'
+            = f.email_field :email, autocomplete: "email", class: 'form-control', placeholder: 'Introduce tu direccion de correo'
           .form-group
             = f.label 'Contraseña (6 Caracteres Minimo)'
             = f.password_field :password, autocomplete: "off", class: 'form-control'

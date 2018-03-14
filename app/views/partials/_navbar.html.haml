@@ -2,45 +2,39 @@
   #Nav.col
     .row.align-items-center
       .col-2.text-center
-        = image_tag 'logo.png', class: 'user-nbar-logo'
+        = link_to root_path do
+          = image_tag 'logo.png', class: 'user-nbar-logo'
 
       -# ----- Buscador -----        
       
       .col-6.text-left
-        = form_tag class: 'form-inline' do
-          .row.px-0
-            .col-5
-              = text_field_tag :keywords, params[:keywords], class: 'flex-2 form-control mr-2', placeholder: 'Busqueda de Perfiles'
-            .col-3
-              = button_tag(type: "submit", class: "btn btn-primary") do
-                = fa_icon "search", class: "fa-lg"
-            .col-4
-            -#^aqui arriba sustitelle '%p' por un icono^
+        = render template: 'profiles/search'
       .col-4
         .row
+          .col-2
           .col-8
             -if current_user.role.name === 'ADMINISTRADOR' 
               %div
                 %button.btn.btn-primary.position-absolute.rounded-circle
-                  = link_to admin_path do
-                    %h6.text-white.m-0
-                      = "#{current_user.name.first.upcase}"
-                .bg-light.ml-4.p-1.pl-2
-                  = link_to admin_path, class: "m-1"  do
-                    %span.badge.text-dark
-                      = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
+                  %h6.text-white.m-0
+                    = "#{current_user.name.first.upcase}"
+                .bg-light.ml-4.p-1.pl-3
+                  %span.badge.text-dark.dropdown-toggle{"data-toggle" => "dropdown"}
+                    = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
+                  .dropdown-menu
+                    = link_to 'Panel Administrativo', admin_path, class: 'dropdown-item'
+                    = link_to 'Cerrar sesion', destroy_user_session_path, method: :delete, class: 'dropdown-item'
             - elsif current_user.role.name === 'USUARIO' && current_user.profile != nil && current_user.profile.persisted?
               %div
                 %button.btn.btn-primary.position-absolute.rounded-circle
-                  = link_to profile_path(current_user.profile) do
-                    %h6.text-white.m-0
-                      = "#{current_user.name.first.upcase}"
-                .bg-light.ml-4.p-1.pl-2 
-                  = link_to profile_path(current_user.profile), class: "m-1"  do                           
-                    %span.badge.text-dark
-                      = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
-          .col-4
-            %button.btn.btn-danger.btn-sm.btn-block
-              = link_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class: 'text-white'
+                  %h6.text-white.m-0
+                    = "#{current_user.name.first.upcase}"
+                .bg-light.ml-4.p-1.pl-3                           
+                  %span.badge.text-dark.dropdown-toggle{"data-toggle" => "dropdown"}
+                    = "#{current_user.name.titleize} #{current_user.lastname.titleize}"
+                  .dropdown-menu
+                    = link_to 'Ver mi perfil', profile_path(current_user.profile), class: 'dropdown-item'
+                    = link_to 'Cerrar sesion', destroy_user_session_path, method: :delete, class: 'dropdown-item'
+          .col-1        
 - else
   = render template: 'devise/sessions/login_form'

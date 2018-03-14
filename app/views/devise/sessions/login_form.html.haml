@@ -1,8 +1,10 @@
 .col-sm-12
   .row.align-items-center
     .col-sm-2.text-center
-      = image_tag 'logo.png', class: 'user-nbar-logo'
+      = link_to root_path do
+        = image_tag 'logo.png', class: 'user-nbar-logo'
     .col-sm-5
+      = render template: 'profiles/search'
     .col-sm-5
       = form_for(:user, as: :user, url: new_user_session_path) do |f|
         .row

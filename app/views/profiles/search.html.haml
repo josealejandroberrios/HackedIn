@@ -1,0 +1,8 @@
+= form_tag profiles_index_path, method: :get do
+  .col-12    
+    .row
+      .col-10
+        = text_field_tag :profile, params[:profile], class: 'form-control', placeholder: 'Busqueda de Perfiles'
+      .col-2.text-left
+        = button_tag(type: "submit", class: "btn btn-primary") do
+          = fa_icon "search", class: "fa-lg"

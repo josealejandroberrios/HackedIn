@@ -2,18 +2,20 @@
   .form-group
     = f.label 'Avatar'
     = f.file_field :avatar, class: 'form-control'
-  .form-group
+  .form-group.was-validated
     = f.label 'Pais'
-    = f.text_field :country, class: 'form-control'
-    - if @profile.errors[:country].any?
-      .text-danger 
-        = @profile.errors[:country].to_s[/\w([^"]*)/]
-  .form-group
+    = f.text_field :country, class: 'form-control', placeholder: 'Introduce un pais', required: true
+    .invalid-feedback
+      Falta completar este campo
+    .valid-feedback
+      Listo
+  .form-group.was-validated
     = f.label 'Descripcion'
-    = f.trix_editor :about, class: 'form-control'
-    - if @profile.errors[:about].any?
-      .text-danger 
-        = @profile.errors[:about].to_s[/\w([^"]*)/]
+    = f.trix_editor :about, class: 'form-control', placeholder: 'Introduce una descripcion sobre ti', required: true
+    .invalid-feedback
+      Falta completar este campo
+    .valid-feedback
+      Listo
   %hr.mt-5.line-border-shadow/
   .form-group
     %h3.text-center

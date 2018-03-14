@@ -1,7 +1,8 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :new]
-  before_action :set_profile, only: [:show, :edit_info, :edit_description, :edit_level, :update]
-
+  before_action :authenticate_user!, except: [:show, :new, :index]
+  before_action :set_profile, only: [:show, :edit_info, :edit_description, :edit_level, :update, :add_skill]
+  skip_before_action :verify_authenticity_token
+  
   def show
     @levels = Level.all
   end
@@ -9,6 +10,12 @@ class ProfilesController < ApplicationController
   def new
     @profile = Profile.new
     @levels = Level.all
+  end
+
+  def index
+    @profiles = Profile.all
+    @users = Profile.search(params[:profile])
+    @profiles = @users.map {|user| user.profile}
   end
 
   def create
@@ -59,6 +66,17 @@ class ProfilesController < ApplicationController
       end
     end
   end
+
+  # #### FALTA TODAVIA
+  # def add_skill
+  #   @skills = Skill.all
+  #   @requirement = Skill.find(params[:id]).requirements
+  # end
+
+  #   #### FALTA TODAVIA
+  # def added_skill
+  
+  # end
 
   private
     

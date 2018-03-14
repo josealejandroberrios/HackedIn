@@ -1,16 +1,16 @@
 = form_for(@profile) do |f|
   .form-group
-    = f.label 'Avatar'
+    = f.label 'Avatar', class: "text-3rd-font bold"
     = f.file_field :avatar, class: 'form-control'
   .form-group.was-validated
-    = f.label 'Pais'
+    = f.label 'Pais', class: "text-3rd-font bold"
     = f.text_field :country, class: 'form-control', placeholder: 'Introduce un pais', required: true
     .invalid-feedback
       Falta completar este campo
     .valid-feedback
       Listo
   .form-group.was-validated
-    = f.label 'Descripcion'
+    = f.label 'Descripcion', class: "text-3rd-font bold"
     = f.trix_editor :about, class: 'form-control', placeholder: 'Introduce una descripcion sobre ti', required: true
     .invalid-feedback
       Falta completar este campo
@@ -18,23 +18,25 @@
       Listo
   %hr.mt-5.line-border-shadow/
   .form-group
-    %h3.text-center
+    %p.text-3rd-font.bold.text-center.mt-4.mb-3
       = f.label 'Selecione el Nivel'
-    .row.text-center
-      - @levels.each do |level|
-        .col-6.mb-5
-          .row
-            .col
-              = f.radio_button :level_id, level.id
-          .row
-            .col
-              = level.name.upcase
-          .row
-            .col
-              = sanitize(level.positive_description).html_safe
-          .row
-            .col
-              = sanitize(level.negative_description).html_safe
-    %hr.line-border-shadow/
+    .row
+      .col-12
+        .row.justify-content-center
+          - @levels.each do |level|
+            .col-5.ml-2.mb-2.card.profile-border-shadow.text-center.p-2
+              .row
+                .col
+                  = f.radio_button :level_id, level.id
+              .row.my-2
+                .col.text-3rd-font
+                  = level.name.upcase
+              .row
+                .col.text-4th-font
+                  = sanitize(level.positive_description).html_safe
+              .row
+                .col.text-4th-font
+                  = sanitize(level.negative_description).html_safe
+        %hr.line-border-shadow/
   .actions.text-center
-    = f.submit "Guardar", class: 'btn btn-success'
+    = f.submit "Guardar", class: 'btn btn-success buttons-border'

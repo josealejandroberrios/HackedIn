@@ -1,21 +1,25 @@
 = form_for @level do |f|
   .form-group
-    = f.label 'Nombre'
+    = f.label 'Nombre', class: "text-3rd-font bold"
     = f.text_field :name, class: 'form-control'
     - if @level.errors[:name].any?
       .text-danger 
         = @level.errors[:name].to_s[/\w([^"]*)/]
   .form-group
-    = f.label 'Descripción Positiva'
+    = f.label 'Descripción Positiva', class: "text-3rd-font bold"
     = f.trix_editor :positive_description, class: 'form-control'
     - if @level.errors[:positive_description].any?
       .text-danger 
         = @level.errors[:positive_description].to_s[/\w([^"]*)/]
   .form-group
-    = f.label 'Descripción Negativa'
+    = f.label 'Descripción Negativa', class: "text-3rd-font bold"
     = f.trix_editor :negative_description, class: 'form-control'
     - if @level.errors[:negative_description].any?
       .text-danger 
         = @level.errors[:negative_description].to_s[/\w([^"]*)/]
   .actions
-    = f.submit 'Guardar', class: 'btn btn-success'
+    .row.mt-4
+      .col-3
+        = f.submit 'Guardar', class: 'btn btn-success buttons-border'
+      .col-3
+        = link_to 'Regresar', levels_path, class: "btn cancel-button buttons-border"

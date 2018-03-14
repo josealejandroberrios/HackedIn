@@ -5,7 +5,7 @@
         .col-8.card.p-5.profile-border-shadow.mb-4
           .row
             .col
-              %h3.text-center Niveles Cargados
+              %p.text-1st-font.bold.text-center Niveles Cargados
             .col-2.text.center
               = link_to new_level_path do
                 = fa_icon "plus-circle", class: "fa-2x text-success"
@@ -15,18 +15,18 @@
               %table.table
                 %thead
                   %tr
-                    %th Nombre
-                    %th Descripión Positiva
-                    %th Descripión Negativa
-                    %th Acciones
+                    %th.text-3rd-font Nombre
+                    %th.text-3rd-font Descripión Positiva
+                    %th.text-3rd-font Descripión Negativa
+                    %th.text-3rd-font Acciones
                 %tbody
                   - @levels.each do |level|
                     %tr
-                      %td
+                      %td.text-4th-font
                         = level.name
-                      %td
+                      %td.text-4th-font
                         = sanitize(level.positive_description).html_safe
-                      %td
+                      %td.text-4th-font
                         = sanitize(level.negative_description).html_safe
                       %td
                         = link_to edit_level_path(level) do
@@ -35,4 +35,4 @@
                           = fa_icon "trash", class: "fa-lg text-danger"   #### #### agregar ruta de elimnar
           .row
             .col.text-center
-              = link_to 'Regresar', admin_path, class: 'text-center' 
+              = link_to 'Regresar', admin_path, class: "btn cancel-button buttons-border"

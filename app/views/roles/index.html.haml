@@ -17,12 +17,12 @@
               %table.table.mt-2
                 %thead
                   %tr
-                    %th Nombre
-                    %th Acciones
+                    %th.text-3rd-font Nombre
+                    %th.text-3rd-font Acciones
                 %tbody
                   - @roles.each do |role|
                     %tr
-                      %td
+                      %td.text-4th-font
                         = role.name
                       %td
                         = link_to edit_role_path(role) do
@@ -31,7 +31,7 @@
                           = fa_icon "trash", class: "fa-lg text-danger"   #### #### agregar ruta de elimnar
           .row
             .col.text-center
-              = link_to 'Regresar', admin_path, class: 'text-center'
+              = link_to 'Regresar', admin_path, class: "btn cancel-button buttons-border"
   - else 
     .col
       %h3 no tienes permiso

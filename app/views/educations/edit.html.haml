@@ -2,6 +2,5 @@
   .row.justify-content-center
     #Edit-Education.col-4
       .card.p-4.profile-border-shadow.mb-4
-        %h3.text-center.mb-4 Editar
+        %p.text-1st-font.bold.text-center.mb-4 Editar
         = render 'form', role: @education
-        = link_to 'Cancelar', profile_path(params[:profile_id])

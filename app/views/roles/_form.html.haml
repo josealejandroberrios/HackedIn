@@ -1,9 +1,13 @@
 = form_for @role do |f|
   .form-group
-    = f.label 'Nombre', class: 'control-label'
+    = f.label 'Nombre', class: "text-3rd-font bold"
     = f.text_field :name, class: 'form-control'
     - if @role.errors[:name].any?
       .text-danger 
         = @role.errors[:name].to_s[/\w([^"]*)/]
   .actions
-    = f.submit 'Guardar', class: 'btn btn-success text-white'
+    .row.mt-4
+      .col-3
+        = f.submit 'Guardar', class: 'btn btn-success buttons-border'
+      .col-3
+        = link_to 'Regresar', roles_path, class: "btn cancel-button buttons-border"

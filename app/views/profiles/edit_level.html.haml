@@ -2,24 +2,29 @@
   .row.justify-content-center
     .col-6
       .card.p-4.profile-border-shadow.mb-4
-        %h3.text-center.mb-4 Editar Nivel
+        %p.text-1st-font.bold.text-center.mb-4 Editar Nivel
         = form_for(@profile, url: { action: :update}) do |f|
           .form-group
             .row
-              - @levels.each do |level|
-                .col-5.card.ml-2.mb-2
-                  .row
-                    .col
-                      = f.radio_button :level_id, level.id
-                  .row
-                    .col
-                      = level.name.upcase
-                  .row
-                    .col
-                      = sanitize(level.positive_description).html_safe
-                  .row
-                    .col
-                      = sanitize(level.negative_description).html_safe
+              .col-12
+                .row.justify-content-center
+                  - @levels.each do |level|
+                    .col-5.ml-2.mb-2.card.profile-border-shadow
+                      .row
+                        .col
+                          = f.radio_button :level_id, level.id
+                      .row
+                        .col.text-2nd-font
+                          = level.name.upcase
+                      .row
+                        .col.text-3rd-font
+                          = sanitize(level.positive_description).html_safe
+                      .row
+                        .col.text-3rd-font
+                          = sanitize(level.negative_description).html_safe
           .actions
-            = f.submit "Guardar", class: 'btn btn-success'
-        = link_to 'Cancelar', profile_path(@profile)
+            .row.mt-4
+              .col-3
+                = f.submit "Guardar", class: 'btn btn-success buttons-border'
+              .col-3
+                = link_to 'Cancelar', profile_path(@profile), class: "btn cancel-button buttons-border"

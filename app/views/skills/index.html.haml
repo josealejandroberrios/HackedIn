@@ -38,8 +38,8 @@
     .col
       .row
         #List-Skills.col-10
-          %h3 
-            %ins Habilidades
+          %p.title-font
+            Habilidades
         .col-2.text-center
           - if user_signed_in?
             - if @profile.user_id === current_user.id

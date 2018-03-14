@@ -1,5 +1,6 @@
 class ProfileSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
+  include ActionView::Helpers::SanitizeHelper
 
   attributes :path, 
               :id, 
@@ -34,5 +35,9 @@ class ProfileSerializer < ActiveModel::Serializer
 
   def avatar
     "#{object.avatar.url(:medium)}"
+  end
+
+  def about
+    strip_tags(object.about)
   end
 end

@@ -1,8 +1,8 @@
 .col
   .row
     #List-Educations.col-10
-      %h3 
-        %ins Formación
+      %p.title-font
+        Formación
     .col-2.text-center
       - if user_signed_in?
         - if @profile.user_id === current_user.id
@@ -16,22 +16,20 @@
         #Education.col-10
           .row
             .col
-              %h5
-                %strong
-                  = education.place
+              %p.text-1st-font
+                = education.place
           .row
             .col
-              %h6
+              %p.text-2nd-font
                 = education.qualification
           .row
             .col
-              %h6
+              %p.text-2nd-font
                 = education.discipline
           .row
             .col
-              %p
-                %small
-                  = "#{education.start_date} al #{education.finish_date}"
+              %p.text-3rd-font
+                = "#{education.start_date} al #{education.finish_date}"
               %hr.line-border-shadow/
         .col-2
           .row

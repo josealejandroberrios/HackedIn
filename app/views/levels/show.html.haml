@@ -1,8 +1,8 @@
 .col
   .row
     #List-Skills.col-10
-      %h3 
-        %ins Nivel
+      %p.title-font 
+        Nivel
     .col-2.text-center
       - if user_signed_in?
         - if @profile.user_id === current_user.id
@@ -10,22 +10,30 @@
             = fa_icon "pencil", class: "fa-2x text-secondary"
       -### pinta el nivel seleccionado mas los anteriores
   .row
-    .col.ml-5.mt-4.mr-5
+    .col-12
       .row
-        - @levels.each do |level|
-          - if level.id < @profile.level_id
-            .col-5.card.mb-3.ml-2
-              %p.text-center
-                = level.name
+        .col.ml-5.mt-4.mr-5
+          .row.justify-content-center
+            - @levels.each do |level|
+              - if level.id < @profile.level_id
+                .col-5.card.mb-3.ml-2.profile-border-shadow
+                  %p.text-center.text-1st-font
+                    = level.name
+                  %hr.line-border-shadow.mt-0/
+                  %p.text-2nd-font Descripcion Positiva:
+                  .row.my-2
+                    .col-12.text-4th-font
+                      = sanitize(level.positive_description).html_safe
+            .col-5.card.mb-3.ml-2.profile-border-shadow
+              %p.text-center.text-1st-font
+                = @profile.level.name
               %hr.line-border-shadow.mt-0/
-              %strong.badge Descripcion Positiva:
-              = sanitize(level.positive_description).html_safe
-        .col-5.card.mb-3.ml-2
-          %p.text-center
-            = @profile.level.name
-          %hr.line-border-shadow.mt-0/
-          %strong.badge Descripcion Positiva: 
-          = sanitize(@profile.level.positive_description).html_safe
-          %hr.line-border-shadow/
-          %strong.badge Descripcion Negativa:
-          = sanitize(@profile.level.negative_description).html_safe
+              %p.text-2nd-font Descripcion Positiva: 
+              .row.my-2
+                .col-12.text-4th-font
+                  = sanitize(@profile.level.positive_description).html_safe
+              %hr.line-border-shadow/
+              %p.text-4th-font Descripcion Negativa:
+              .row.my-2
+                .col-12.text-4th-font
+                  = sanitize(@profile.level.negative_description).html_safe

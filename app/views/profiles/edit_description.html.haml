@@ -2,7 +2,7 @@
   .row.justify-content-center
     .col-6
       .card.p-4.profile-border-shadow.mb-4
-        %h3.text-center.mb-4 Editar Descripción
+        %p.text-1st-font.bold.text-center.mb-4 Editar Descripción
         = form_for(@profile, url: { action: :update}) do |f|
           .form-group.pt-2
             = f.trix_editor :about, class: 'form-control', cols: "80", rows: "20"
@@ -10,5 +10,8 @@
               .text-danger 
                 = @profile.errors[:about].to_s[/\w([^"]*)/]
           .actions
-            = f.submit "Guardar", class: 'btn btn-success'
-        = link_to 'Cancelar', profile_path(@profile)
+            .row.mt-4
+              .col-3
+                = f.submit "Guardar", class: 'btn btn-success buttons-border'
+              .col-3
+                = link_to 'Cancelar', profile_path(@profile), class: "btn cancel-button buttons-border"

@@ -4,7 +4,7 @@
       #Personal-Information.row.border.border-light.rounded.profile-border-shadow
         .col-12
           #Profile-image.row
-            = image_tag 'fondo-profile-picture.jpg', class: "profile-background rounded" 
+            = image_tag 'fondo-profile-picture.png', class: "profile-background rounded" 
             #Avatar.col-12.text-center.negative-margin
               - if @profile.avatar_file_name == nil
                 = image_tag 'avatar-default.png', class: "image-profile rounded-circle profile-border-shadow"
@@ -13,13 +13,13 @@
         .col-12
           .row.p-3
             #Personal-Data.col-10.mt-5
-              %h3#FullName 
+              %p.text-1st-font#FullName
                 = "#{@profile.user.name.titleize} #{@profile.user.lastname.titleize}"
-              %h3#Email
+              %p.text-3rd-font#Email
                 = "#{@profile.user.email}"
-              %h3#Country
+              %p.text-3rd-font#Country
                 = @profile.country
-              #Repositories.row.mt-3
+              #Repositories.row.mt-2
                 = render template: 'repositories/index'
             - if user_signed_in?
               - if @profile.user_id === current_user.id
@@ -30,15 +30,15 @@
         .col
           .row
             .col-10
-              %h3
-                %ins Descripción
+              %p.title-font
+                Descripción
             - if user_signed_in?
               - if @profile.user_id === current_user.id
                 .col-2.text-center  
                   = link_to edit_description_profile_path(@profile) do
                     = fa_icon "pencil", class: "fa-2x text-secondary" #### verificar esto
           .row
-            .col.ml-5.mt-4.mr-5
+            .col.ml-5.mt-4.mr-5.text-4th-font
               = sanitize(@profile.about).html_safe
       #Levels.row.border.border-light.mt-3.p-3.rounded.profile-border-shadow
         = render template: 'levels/show'

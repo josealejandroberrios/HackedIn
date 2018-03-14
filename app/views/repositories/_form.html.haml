@@ -1,9 +1,13 @@
 = form_for [:profile, @repository] do |f|
   .form-group
-    = f.label 'Link'
+    = f.label 'Link', class: "text-3rd-font bold"
     = f.text_field :link, class: 'form-control'
     - if @repository.errors[:link].any?
       .text-danger 
         = @repository.errors[:link].to_s[/\w([^"]*)/]
   .actions
-    = f.submit 'Guardar', class: 'btn btn-success text-white'
+    .row.mt-4
+      .col-3
+        = f.submit 'Guardar', class: 'btn btn-success buttons-border'
+      .col-3
+        = link_to 'Cancelar', profile_path(params[:profile_id]), class: "btn cancel-button buttons-border"

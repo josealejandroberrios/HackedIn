@@ -1,8 +1,8 @@
 .col
   .row
     #List-Jobs.col-10
-      %h3 
-        %ins Experiencia
+      %p.title-font
+        Experiencia
     .col-2.text-center
       - if user_signed_in?
         - if @profile.user_id === current_user.id
@@ -16,22 +16,19 @@
         #Job.col-10
           .row
             .col
-              %h5
-                %strong
-                  = job.company
+              %p.text-1st-font
+                = job.company
           .row
             .col
-              %h6
+              %p.text-2nd-font
                 = job.position
+          .row.my-2
+            .col.text-4th-font
+              = job.description
           .row
             .col
-              .blockquote-footer
-                = job.description
-          .row
-            .col
-              %h6
-                %small
-                  = "#{job.start_date} al #{job.finish_date}"
+              %p.text-3rd-font
+                = "#{job.start_date} al #{job.finish_date}"
               %hr.line-border-shadow/
         .col-2
           .row

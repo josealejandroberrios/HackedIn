@@ -1,14 +1,14 @@
 .col
   .row
     .col-10
-      %h3 
-        %ins Repositorios:
+      %p.text-2nd-font
+        Repositorios
     .col-2.text-right
       - if user_signed_in?
         - if @profile.user_id === current_user.id
           = link_to new_profile_repository_path(@profile) do
             = fa_icon "plus-circle", class: "fa-lg text-success"
-  .row.pl-5.mt-4
+  .row.pl-5.mt-2
     - if @profile.repositories.empty?
       .col
     - else
@@ -16,7 +16,7 @@
         .row
           - @profile.repositories.each do |repository|
             .col-8
-              %a{:href => "https://#{repository.link}", :target => "_blank"}
+              %a.text-4th-font{:href => "https://#{repository.link}", :target => "_blank"}
                 %p
                   = repository.link
             .col-4

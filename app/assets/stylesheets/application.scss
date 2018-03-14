@@ -3,6 +3,45 @@
  @import "font-awesome";
  @import "trix";
 
+p{
+  margin-bottom: 0px;
+}
+
+@font-face{
+  font-family: "Prueba";
+  src: url(/assets/HelveticaNeue.otf) format("truetype");
+}
+
+.bold{
+  font-weight: bold;
+}
+.title-font{
+  font-family: Arial, Helvetica, sans-serif;
+  color: #877457;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.text-1st-font{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 23px;
+}
+
+.text-2nd-font{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 19px;
+}
+
+.text-3rd-font{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+}
+
+.text-4th-font{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+
 .container-fluid{
   min-height: 100vh;
   height: auto;
@@ -50,6 +89,8 @@
 .profile-background{
   width: 100%;
   height: 200px;
+  // opacity: 0.7;
+  filter: grayscale(100%);
 }
 
 .negative-margin{
@@ -58,4 +99,23 @@
 
 .fa-7em{
   font-size: 7em;
+}
+
+.buttons-border{
+  border-radius: 40px;
+}
+
+.cancel-button{
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #30A64A;
+  color: #30A64A;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.cancel-button:hover{
+  color: #30A64A;
+  text-decoration: none;
 }

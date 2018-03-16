@@ -1,7 +1,7 @@
 class RepositoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_profile, only: [:index, :create]
-  before_action :set_repository, only: [:edit, :update]
+  before_action :set_repository, only: [:edit, :update, :destroy]
 
   def index
     @repositories = Repository.find_or_initialize_by(id: params[:id])
@@ -41,6 +41,14 @@ class RepositoriesController < ApplicationController
     end
   end
 
+  def destroy
+    @repository.destroy
+    respond_to do |format|
+      format.html { redirect_to profile_path(@repository.profile)}
+      format.json { head :no_content }
+    end
+  end
+  
   private
 
     def set_repository

@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_profile, only: [:index, :create]
-  before_action :set_job, only: [:edit, :update]
+  before_action :set_job, only: [:edit, :update, :destroy]
 
   def index
     @jobs = Job.find_or_initialize_by(id: params[:id])
@@ -38,6 +38,14 @@ class JobsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @job.destroy
+    respond_to do |format|
+      format.html { redirect_to profile_path(@job.profile) }
+      format.json { head :no_content }
     end
   end
 

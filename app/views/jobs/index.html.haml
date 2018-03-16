@@ -38,8 +38,8 @@
                   = link_to edit_profile_job_path(@profile, job) do
                     = fa_icon "pencil", class: "fa-lg text-secondary"
                 .col-6.text-right
-                  = link_to "" do
-                    = fa_icon "trash", class: "fa-lg text-danger"  ##### falta agregar la ruta del destroy
+                  = link_to profile_job_path(@profile, job), method: :delete do
+                    = fa_icon "trash", class: "fa-lg text-danger" 
 
           
         

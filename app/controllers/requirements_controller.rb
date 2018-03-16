@@ -1,7 +1,7 @@
 class RequirementsController < ApplicationController
    before_action :authenticate_user!
    before_action :set_skill, only: [:index, :create]
-   before_action :set_requirement, only: [:edit, :update]
+   before_action :set_requirement, only: [:edit, :update, :destroy]
  
    def index
      @requirements = Requirement.find_or_initialize_by(id: params[:id])
@@ -40,6 +40,14 @@ class RequirementsController < ApplicationController
        end
      end
    end
+
+   def destroy
+    @requirement.destroy
+    respond_to do |format|
+      format.html { redirect_to edit_skill_path(id: @requirement.skill)}
+      format.json { head :no_content }
+    end
+   end
  
    private
  
@@ -52,6 +60,6 @@ class RequirementsController < ApplicationController
      end
  
      def requirement_params
-       params.require(:requirement).permit(:name, :skill_id, profile_id:)
+       params.require(:requirement).permit(:name, :skill_id, :profile_id)
      end
 end

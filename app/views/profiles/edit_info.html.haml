@@ -7,12 +7,12 @@
           .row
             #Avatar.col-12.text-center
               - if @profile.avatar_file_name == nil
-                = image_tag 'avatar-default.png', class: "image-profile rounded-circle profile-border-shadow", id:"something_unique"
+                = image_tag 'avatar-default.png', class: "image-profile rounded-circle profile-border-shadow"
               - else
-                = image_tag @profile.avatar.url(:medium), class: "image-profile rounded-circle profile-border-shadow", id:"something_unique"
+                = image_tag @profile.avatar.url(:medium), class: "image-profile rounded-circle profile-border-shadow"
             #Avatar-Load.col-12.mt-2
               = f.label 'Avatar', class: 'text-center col text-3rd-font bold'
-              = f.file_field :avatar, class: 'small ml-5', id:"something_else_unique"
+              = f.file_field :avatar, class: 'small ml-5'
               %hr.line-border-shadow.mt-4/
             #Name.col-12
               = f.fields_for(:user) do |u|

@@ -31,7 +31,8 @@ class SkillsController < ApplicationController
    def update
      respond_to do |format|
        if @skill.update(skill_params)
-         format.html { redirect_to skills_path }
+        #  format.html { redirect_to skills_path }
+         format.html { redirect_to edit_skill_url(@skill)}
          format.json { render :show, status: :ok, location: @skill }
        else
          format.html { render :edit }
@@ -64,6 +65,6 @@ class SkillsController < ApplicationController
      end
  
      def skill_params
-       params.require(:skill).permit(:name, :profile_id)
+       params.require(:skill).permit(:name, :profile_id, requirements_attributes:[:name])
      end
 end

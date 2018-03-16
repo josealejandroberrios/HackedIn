@@ -14,14 +14,19 @@
                         .col
                           = f.radio_button :level_id, level.id
                       .row
-                        .col.text-2nd-font
-                          = level.name.upcase
+                        .col
+                          %p.text-2nd-font
+                            = level.name.upcase
+                      %hr.line-border-shadow
                       .row
-                        .col.text-3rd-font
-                          = sanitize(level.positive_description).html_safe
+                        .col
+                          %p.text-3nd-font Descripcion Positiva: 
+                          %p.text-4th-font= sanitize(level.positive_description).html_safe
+                      %hr.line-border-shadow
                       .row
-                        .col.text-3rd-font
-                          = sanitize(level.negative_description).html_safe
+                        .col
+                          %p.text-3nd-font Descripcion Negativa:
+                          %p.text-4th-font= sanitize(level.negative_description).html_safe
           .actions
             .row.mt-4
               .col-3

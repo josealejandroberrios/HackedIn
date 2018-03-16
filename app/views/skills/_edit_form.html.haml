@@ -1,0 +1,27 @@
+= form_for @skill do |f|
+  .form-group
+    = f.label 'Nombre'
+    = f.text_field :name, class: 'form-control'
+    - if @skill.errors[:name].any?
+      .text-danger 
+        = @skill.errors[:name].to_s[/\w([^"]*)/]
+  %hr.line-border-shadow.my-4/
+  %h4.text-center Nuevo Requerimiento
+  = f.fields_for :requirements, Requirement.new do |r|
+    .form-group
+      = r.label 'Nombre'
+      = r.text_field :name, class: 'form-control'
+  %hr.line-border-shadow.my-4/
+  %h5.text-center= "Requerimientos de #{@skill.name}" 
+  .row
+    - @skill.requirements.each do |c|
+      .col-4
+        %small= "| #{c.name} |"
+        = link_to skill_requirement_path(@skill, c), method: :delete do
+          = fa_icon "trash", class: "fa-xs text-danger"
+  .actions
+    .row.mt-4
+      .col-3
+        = f.submit 'Guardar', class: 'btn btn-success text-white'
+      .col-3
+        = link_to 'Regresar', skills_path, class: "btn cancel-button buttons-border"

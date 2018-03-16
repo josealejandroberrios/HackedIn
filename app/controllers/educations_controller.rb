@@ -1,7 +1,7 @@
 class EducationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_profile, only: [:index, :create]
-  before_action :set_education, only: [:edit, :update]
+  before_action :set_education, only: [:edit, :update, :destroy]
 
   def index
     @eductions = Education.find_or_initialize_by(id: params[:id])
@@ -38,6 +38,14 @@ class EducationsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @education.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @education.destroy
+    respond_to do |format|
+      format.html { redirect_to profile_path(@education.profile) }
+      format.json { head :no_content }
     end
   end
 

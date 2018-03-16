@@ -28,5 +28,8 @@
                     %p= "#{user.name.titleize} #{user.lastname.titleize}"
                     %p= user.email
                     %p= user.profile.country
+                    - @skills_profile = user.profile.skills.map {|skill| skill.name}.join(", ")
+                    - if !@skills_profile.blank?
+                      %p= "Habilidades: #{@skills_profile}"
                   .col-3
                     = link_to 'Ver Perfil', profile_path(user.profile), class: 'text-white btn btn-success col'
